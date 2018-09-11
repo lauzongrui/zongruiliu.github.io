@@ -1,2 +1,2 @@
 # zongruiliu.github
-编写个人的技术博客
+技术博客 
