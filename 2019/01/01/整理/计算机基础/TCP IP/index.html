@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="TCP/IP ( Transmission Control Protocol I Internet Protocol )中文译为传输控制协议/因特网互联协议，这个大家族里的其他知名协议还有 HTTP、HTTP、 FTP、SMTP、 UDP、ARP、 PPP、 IEEE 802.x等。 TCP/IP是当前流行的网络传输协议框架，从严格意义上讲它是一个协议族，因为 TCP, IP 是其中最为核心的协">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大胖熊子">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/index.html">
+<meta property="og:site_name" content="大胖熊子">
+<meta property="og:description" content="TCP/IP ( Transmission Control Protocol I Internet Protocol )中文译为传输控制协议/因特网互联协议，这个大家族里的其他知名协议还有 HTTP、HTTP、 FTP、SMTP、 UDP、ARP、 PPP、 IEEE 802.x等。 TCP/IP是当前流行的网络传输协议框架，从严格意义上讲它是一个协议族，因为 TCP, IP 是其中最为核心的协">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-01T11:52:18.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大胖熊子">
+<meta name="twitter:description" content="TCP/IP ( Transmission Control Protocol I Internet Protocol )中文译为传输控制协议/因特网互联协议，这个大家族里的其他知名协议还有 HTTP、HTTP、 FTP、SMTP、 UDP、ARP、 PPP、 IEEE 802.x等。 TCP/IP是当前流行的网络传输协议框架，从严格意义上讲它是一个协议族，因为 TCP, IP 是其中最为核心的协">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>大胖熊子</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/01/03/整理/面试/面试知识积累/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/01/01/整理/计算机基础/CPU与内存/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网络协议"><span class="toc-number">1.</span> <span class="toc-text">1.网络协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-链路层"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 链路层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-网络层"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 网络层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-传输层"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 传输层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-应用层"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 应用层</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-IP协议"><span class="toc-number">2.</span> <span class="toc-text">2. IP协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TCP建立连接"><span class="toc-number">3.</span> <span class="toc-text">3. TCP建立连接</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">大胖熊子</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-01-01T07:24:08.974Z" itemprop="datePublished">2019-01-01</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>TCP/IP ( Transmission Control Protocol I Internet Protocol )中文译为传输控制协议/因特网互联协议，这个大家族里的其他知名协议还有 HTTP、HTTP、 FTP、SMTP、 UDP、ARP、 PPP、 IEEE 802.x等。 TCP/IP是当前流行的网络传输协议框架，从严格意义上讲它是一个协议族，因为 TCP, IP 是其中最为核心的协议，所以就把该协议族称为 TCP/IP。</p>
+</blockquote>
+<h3 id="1-网络协议"><a href="#1-网络协议" class="headerlink" title="1.网络协议"></a>1.网络协议</h3><h4 id="1-1-链路层"><a href="#1-1-链路层" class="headerlink" title="1.1 链路层"></a>1.1 链路层</h4><p>单个0、1是没有意义的，链路层以字节为单位把0与1进行分组，定义数据帧，写入源和目标机器的物理地址、数据、校验位来传输数据。</p>
+<h4 id="1-2-网络层"><a href="#1-2-网络层" class="headerlink" title="1.2 网络层"></a>1.2 网络层</h4><p>根据IP定义网路地址，区分网段。子网内根据地址解析协议（ARP）进行MAC寻址，子网外进行路由转发数据包，这个数据包即IP数据包。</p>
+<h4 id="1-3-传输层"><a href="#1-3-传输层" class="headerlink" title="1.3 传输层"></a>1.3 传输层</h4><p>数据包通过网络层发送到目标计算机后，应用程序在传输层定义逻辑端口 ， 确认身份后，将数据包交给应用程序，实现端口到端口间通信。最典型的传输层协议是 UDP 和 TCP。 UDP 只是在 IP 数据包上增加端口等部分信息 ， 是面向无连接的，是不可靠传输，多用于视频通信、电话会议等(即使少一帧数据也无妨)。与之相反 ， TCP 是面向连接的。所谓面向连接 ， 是一种端到端间通过失败重传机制建立的可靠数据传输方式，给人感觉是有一条固定的通路承载着数据的可靠传输。</p>
+<h4 id="1-4-应用层"><a href="#1-4-应用层" class="headerlink" title="1.4 应用层"></a>1.4 应用层</h4><p>传输层的数据到达应用程序时，以某种统一规定的协议格式解读数据。比如 ， E-mail 在各个公司的程序界面、操作、管理方式都不一样，但是都能够读取邮件内容 ， 是因为 SMTP 协议就像传统的书信恪式一样，按规定填写邮编及收信人信息。</p>
+<blockquote>
+<p>程序在发送消息时，应用层接既定的协议打包数据，随后由传输层加上双方的端口号，由网络层加上双方的 IP 地址，由链路层加上双方的 MAC 地址，并将数据拆分成数据帧，经过多个路由器和网关后 ， 到达目标机器。简而言之 ，就是按 “端口→ IP 地址→ MAC 地址 ” 这样的路径进行数据的封装和发送 ， 解包的时候反过来操作即可。 </p>
+</blockquote>
+<h3 id="2-IP协议"><a href="#2-IP协议" class="headerlink" title="2. IP协议"></a>2. IP协议</h3><p>IP是面向无连接、无状态的，没有额外的机制保证发送的包是否有序到达。 IP首先规定出 IP 地址格式，该地址相当于在逻辑意义上进行 了 网段的划分，给每台计算机额外设置了一个唯一的详细地址。</p>
+<h3 id="3-TCP建立连接"><a href="#3-TCP建立连接" class="headerlink" title="3. TCP建立连接"></a>3. TCP建立连接</h3><p>传输控制协议( Transmission Control Protocol, TCP )，是一种面向连接、确保数据在端到端间可靠传输的协议。面向连接是插在发送数据前，需要先建立一条虚拟的链路，然后让数据在这条链路上“流动”完成传输。为了确保数据的可靠传输，不仅需要对发出的每一个字节进行编号确认，校验每一个数据包的有效性，在出现超时情况时进行重传，还需要通过实现滑动窗口和拥塞控制等机制，避免网络状况恶化而最终影响数据传输的极端情形。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网络协议"><span class="toc-number">1.</span> <span class="toc-text">1.网络协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-链路层"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 链路层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-网络层"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 网络层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-传输层"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 传输层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-应用层"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 应用层</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-IP协议"><span class="toc-number">2.</span> <span class="toc-text">2. IP协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TCP建立连接"><span class="toc-number">3.</span> <span class="toc-text">3. TCP建立连接</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/01/01/整理/计算机基础/TCP IP/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 liuzongrui
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
