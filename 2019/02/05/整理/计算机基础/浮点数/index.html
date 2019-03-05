@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="1.什么是浮点数浮点数是计算机用来表示小数的一种数据类型。在数学中，采用科学计数法来近似表示一个极大或极小且位数较多的数。如$a10^n$，其中a满足1≤|a|≤10，$10^n$是以10为底数，n为指数的幂运算表达式。$a10^n$还可以表达承诺aen。 -4.86e11 等价于-4.86 ×$10^{11}$，它们都表示真实值-486000000000。所以浮点数无法表示零值。 2.浮点数表示">
+<meta name="keywords" content="计算机基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浮点数.md">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/index.html">
+<meta property="og:site_name" content="大胖熊子">
+<meta property="og:description" content="1.什么是浮点数浮点数是计算机用来表示小数的一种数据类型。在数学中，采用科学计数法来近似表示一个极大或极小且位数较多的数。如$a10^n$，其中a满足1≤|a|≤10，$10^n$是以10为底数，n为指数的幂运算表达式。$a10^n$还可以表达承诺aen。 -4.86e11 等价于-4.86 ×$10^{11}$，它们都表示真实值-486000000000。所以浮点数无法表示零值。 2.浮点数表示">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-05T08:32:00.483Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浮点数.md">
+<meta name="twitter:description" content="1.什么是浮点数浮点数是计算机用来表示小数的一种数据类型。在数学中，采用科学计数法来近似表示一个极大或极小且位数较多的数。如$a10^n$，其中a满足1≤|a|≤10，$10^n$是以10为底数，n为指数的幂运算表达式。$a10^n$还可以表达承诺aen。 -4.86e11 等价于-4.86 ×$10^{11}$，它们都表示真实值-486000000000。所以浮点数无法表示零值。 2.浮点数表示">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>浮点数.md</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/02/05/整理/数据结构和算法/数组/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/02/05/整理/计算机基础/CPU与内存/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&text=浮点数.md"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&is_video=false&description=浮点数.md"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=浮点数.md&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&name=浮点数.md&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是浮点数"><span class="toc-number">1.</span> <span class="toc-text">1.什么是浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-浮点数表示"><span class="toc-number">2.</span> <span class="toc-text">2.浮点数表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-单精度浮点数详细分析"><span class="toc-number">3.</span> <span class="toc-text">3.单精度浮点数详细分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-符号位"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 符号位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-阶码位"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 阶码位</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-为什么要使用移码表示阶码？"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 为什么要使用移码表示阶码？</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-尾数位"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 尾数位</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-浮点数的运算"><span class="toc-number">4.</span> <span class="toc-text">4. 浮点数的运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-零值检测"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 零值检测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-对阶操作"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 对阶操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-尾数求和"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 尾数求和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-结果规范化"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 结果规范化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-结果舍入"><span class="toc-number">4.5.</span> <span class="toc-text">4.5 结果舍入</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        浮点数.md
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">大胖熊子</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-02-05T08:17:15.000Z" itemprop="datePublished">2019-02-05</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/计算机基础/">计算机基础</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-什么是浮点数"><a href="#1-什么是浮点数" class="headerlink" title="1.什么是浮点数"></a>1.什么是浮点数</h3><p>浮点数是计算机用来表示小数的一种数据类型。在数学中，采用科学计数法来近似表示一个极大或极小且位数较多的数。如$a<em>10^n$，其中a满足1≤|a|≤10，$10^n$是以10为底数，n为指数的幂运算表达式。$a</em>10^n$还可以表达承诺aen。 -4.86e11 等价于-4.86 ×$10^{11}$，它们都表示真实值-486000000000。所以浮点数无法表示零值。</p>
+<h3 id="2-浮点数表示"><a href="#2-浮点数表示" class="headerlink" title="2.浮点数表示"></a>2.浮点数表示</h3><p>浮点数表示就是如何用二进制表示符号、指数和有效数字。当前业界流行的浮点数标准是IEEE754，该标准规定了4种浮点数类型：单精度 、双精度、延伸单精度、延伸双精度。</p>
+<h3 id="3-单精度浮点数详细分析"><a href="#3-单精度浮点数详细分析" class="headerlink" title="3.单精度浮点数详细分析"></a>3.单精度浮点数详细分析</h3><p>单精度浮点数的字节数为4（Byte），总共有32（bit）。</p>
+<p>从数学世界的科学计数法映射到计算机世界的浮点数时，数制从十进制改为二进制，还要考虑内存硬件设备的实现方式。在规格化表示上存在差异，称谓有所改变，指数称为“阶码”，有效数字成为”尾数“，所以用于存储符号、阶码、尾数的二进制位分别成为符号位、阶码位、尾数位，下面详细阐述三个部分的编码格式。</p>
+<p><strong><em>移码（又叫增码）是符号位取反的补码，一般用指数的移码减去1来做浮点数的阶码，引入的目的是为了保证浮点数的机器零为全0。</em></strong></p>
+<h4 id="3-1-符号位"><a href="#3-1-符号位" class="headerlink" title="3.1 符号位"></a>3.1 符号位</h4><p>在最高二进制位上分配 l 位表示浮点数的符号， 0 表示正数， 1 表示负数。</p>
+<h4 id="3-2-阶码位"><a href="#3-2-阶码位" class="headerlink" title="3.2 阶码位"></a>3.2 阶码位</h4><p>在符号位右侧分配 8 位用来存储指数。</p>
+<h5 id="3-2-1-为什么要使用移码表示阶码？"><a href="#3-2-1-为什么要使用移码表示阶码？" class="headerlink" title="3.2.1 为什么要使用移码表示阶码？"></a>3.2.1 为什么要使用移码表示阶码？</h5><p>为了便于浮点数比大小，IEEE754 标准规定阶码位存储的是指数对应的<strong><em>移码</em></strong>，而不是指数的原码或补码。如果阶码（指数）也用补码来表示，就会使得一个浮点数中出现两个符号位：浮点数自身的和浮点数指数部分的。这样的结果是，在比较两个浮点数大小时，无法像比较整数时一样使用简单的无逻辑的二进制比较，故而浮点数的指数部分采用了移码（无符号整数）来表示。</p>
+<p>根据计算机组成原理中对移码的定义可知，移码是将一个真值在数轴上正向平移个偏移量之后得到的，即 $[x]_移=x+2^{n-1}​$ (n为x的二进制位数，含符号位)。移码的几何意义是把真值映射到 个正数域，其特点是可以直观地反映两个真值的大小，即移码大的真值也大。基于这个特点，对计算机来说用移码比较两个真值的大小非常简单，只要高位对齐后逐个比较即可，不用考虑负号的问题，这也是阶码会采用移码表示的原因所在。</p>
+<p>例子 $|-8| = -8 + 2^{8-1} = 100$  、$|20| = 20 + 2^{8-1} = 148$</p>
+<p>由于阶码实际存储的是指数的移码，所以指数与阶码之间的换算关系就是指数与它的移码之间的换算关系。假设指数的真值为 e，阶码为 E，则有$E=e+(2^{n-1}-1)$，其中 $2^{n-1}-1$ 是 IEEE754 标准规定的偏移量， n=8 是阶码的二进制位数。</p>
+<p>为什么偏移值为$2^{n-1}-1$而不是 $2^{n}-1$呢？因为 8 个二进制位能表示指数的取值范围为[-128,127]，现在将指数变成移码表示，即将区间[- 128,127]正向平移到正数域，区间里的每个数都需要加上 128，从而得到阶码范围为[0,255]。由于计算机规定阶码全为 0 或全为 l 两种情况被当作特殊值处理(全 0 被认为是机器零，全 1 被认为是无穷大)，去除这两个特殊值，阶码E的取值范围变成了[1,254]。如果偏移量不变仍为128 的话，则根据指数与阶码的换算关系公式$E=e+128$得到指数e的范围变成[-127,126]，指数最大只能取到 126，显然会缩小浮点数能表示的取值范围。所以 IEEE754 标准规定单精度的阶码偏移量为$2^{n-1}-1$(即 127 )，这样能表示的指数范围为 [-126,127],指数最大值能取到 127。</p>
+<h4 id="3-3-尾数位"><a href="#3-3-尾数位" class="headerlink" title="3.3 尾数位"></a>3.3 尾数位</h4><p>最右侧分配连续的 23 位用来存储有效数。</p>
+<p>IEEE754标准规定尾数以原码表示。正指数和有效数字的最大值决定了 32位存储空间能够表示浮点数的十进制最大值。指数最大值为$2^{127}≈1.7<em>10^{38}$，而有效数字部分最大值是二进制的 1.11···1 (小数点后 23 个 1 )，是个无限接近于 2 的数字，所以得到最大的十进制数为$2</em>1.7*10^{38}$，再加上最左 l 位的符号，最终得到 32 位浮点数最大值为 3.4e+38。 </p>
+<p>科学技术法进行规格化的目的是保证浮点数表示的唯一性。如同十进制规格化的要求$1≤|a|＜10$，二进制数据规则化后的尾数形式为1.xyz，满足$1≤|a|＜2$。为了节约存储空间，将符合规格化尾数的首个1省略，所以尾数表面上是23位，却表示了24位二进制数。</p>
+<h3 id="4-浮点数的运算"><a href="#4-浮点数的运算" class="headerlink" title="4. 浮点数的运算"></a>4. 浮点数的运算</h3><h4 id="4-1-零值检测"><a href="#4-1-零值检测" class="headerlink" title="4.1 零值检测"></a>4.1 零值检测</h4><h4 id="4-2-对阶操作"><a href="#4-2-对阶操作" class="headerlink" title="4.2 对阶操作"></a>4.2 对阶操作</h4><p>对阶过程中，移位操作，导致运算值会有偏差</p>
+<h4 id="4-3-尾数求和"><a href="#4-3-尾数求和" class="headerlink" title="4.3 尾数求和"></a>4.3 尾数求和</h4><h4 id="4-4-结果规范化"><a href="#4-4-结果规范化" class="headerlink" title="4.4 结果规范化"></a>4.4 结果规范化</h4><h4 id="4-5-结果舍入"><a href="#4-5-结果舍入" class="headerlink" title="4.5 结果舍入"></a>4.5 结果舍入</h4><p>### </p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是浮点数"><span class="toc-number">1.</span> <span class="toc-text">1.什么是浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-浮点数表示"><span class="toc-number">2.</span> <span class="toc-text">2.浮点数表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-单精度浮点数详细分析"><span class="toc-number">3.</span> <span class="toc-text">3.单精度浮点数详细分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-符号位"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 符号位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-阶码位"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 阶码位</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-为什么要使用移码表示阶码？"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 为什么要使用移码表示阶码？</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-尾数位"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 尾数位</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-浮点数的运算"><span class="toc-number">4.</span> <span class="toc-text">4. 浮点数的运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-零值检测"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 零值检测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-对阶操作"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 对阶操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-尾数求和"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 尾数求和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-结果规范化"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 结果规范化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-结果舍入"><span class="toc-number">4.5.</span> <span class="toc-text">4.5 结果舍入</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&text=浮点数.md"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&is_video=false&description=浮点数.md"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=浮点数.md&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&title=浮点数.md"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/浮点数/&name=浮点数.md&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 liuzongrui
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

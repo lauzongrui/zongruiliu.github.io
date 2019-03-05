@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="title: JVM启动参数.mddate: 2019-02-05 16:17:19 tags:JVMJAVA启动参数共分为三类其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取">
+    <meta name="description" content="JAVA启动参数共分为三类其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取消，需要慎重使用； 一、标准参数中比较有用的：verbose-verbose:class输出jvm载入">
+<meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大胖熊子">
-<meta property="og:url" content="https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/index.html">
+<meta property="og:title" content="JVM启动参数.md">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/index.html">
 <meta property="og:site_name" content="大胖熊子">
-<meta property="og:description" content="title: JVM启动参数.mddate: 2019-02-05 16:17:19 tags:JVMJAVA启动参数共分为三类其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取">
+<meta property="og:description" content="JAVA启动参数共分为三类其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取消，需要慎重使用； 一、标准参数中比较有用的：verbose-verbose:class输出jvm载入">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-05T08:23:37.469Z">
+<meta property="og:updated_time" content="2019-03-05T08:39:12.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大胖熊子">
-<meta name="twitter:description" content="title: JVM启动参数.mddate: 2019-02-05 16:17:19 tags:JVMJAVA启动参数共分为三类其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取">
+<meta name="twitter:title" content="JVM启动参数.md">
+<meta name="twitter:description" content="JAVA启动参数共分为三类其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取消，需要慎重使用； 一、标准参数中比较有用的：verbose-verbose:class输出jvm载入">
     
     
         
@@ -36,7 +37,7 @@
         
     
     <!-- title -->
-    <title>大胖熊子</title>
+    <title>JVM启动参数.md</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -72,10 +73,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/03/05/test-md/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/05/整理/计算机基础/理解补码、原码、反码/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/01/03/整理/数据结构和算法/数组/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/01/03/整理/面试/面试知识积累/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -88,21 +89,21 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&text=JVM启动参数.md"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&is_video=false&description=JVM启动参数.md"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JVM启动参数.md&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&name=JVM启动参数.md&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags-JVM"><span class="toc-number">1.</span> <span class="toc-text">tags:JVM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JAVA启动参数共分为三类"><span class="toc-number">1.1.</span> <span class="toc-text">JAVA启动参数共分为三类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、标准参数中比较有用的："><span class="toc-number">1.1.1.</span> <span class="toc-text">一、标准参数中比较有用的：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#verbose"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">verbose</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、非标准参数又称为扩展参数，一般用到最多的是"><span class="toc-number">1.1.2.</span> <span class="toc-text">二、非标准参数又称为扩展参数，一般用到最多的是</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JAVA启动参数共分为三类"><span class="toc-number">1.</span> <span class="toc-text">JAVA启动参数共分为三类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、标准参数中比较有用的："><span class="toc-number">1.1.</span> <span class="toc-text">一、标准参数中比较有用的：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#verbose"><span class="toc-number">1.1.1.</span> <span class="toc-text">verbose</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、非标准参数又称为扩展参数，一般用到最多的是"><span class="toc-number">1.2.</span> <span class="toc-text">二、非标准参数又称为扩展参数，一般用到最多的是</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -114,7 +115,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        JVM启动参数.md
     </h1>
 
 
@@ -125,21 +126,25 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2019-01-23T08:07:20.171Z" itemprop="datePublished">2019-01-23</time>
+        <time datetime="2019-02-05T08:17:15.000Z" itemprop="datePublished">2019-02-05</time>
     </div>
 
 
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/JVM/">JVM</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    <p>title: JVM启动参数.md<br>date: 2019-02-05 16:17:19</p>
-<h2 id="tags-JVM"><a href="#tags-JVM" class="headerlink" title="tags:JVM"></a>tags:JVM</h2><h3 id="JAVA启动参数共分为三类"><a href="#JAVA启动参数共分为三类" class="headerlink" title="JAVA启动参数共分为三类"></a>JAVA启动参数共分为三类</h3><p>其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；<br>其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；<br>其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取消，需要慎重使用；</p>
+    <h3 id="JAVA启动参数共分为三类"><a href="#JAVA启动参数共分为三类" class="headerlink" title="JAVA启动参数共分为三类"></a>JAVA启动参数共分为三类</h3><p>其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；<br>其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；<br>其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取消，需要慎重使用；</p>
 <h4 id="一、标准参数中比较有用的："><a href="#一、标准参数中比较有用的：" class="headerlink" title="一、标准参数中比较有用的："></a>一、标准参数中比较有用的：</h4><h5 id="verbose"><a href="#verbose" class="headerlink" title="verbose"></a>verbose</h5><p>-verbose:class<br>输出jvm载入类的相关信息，当jvm报告说找不到类或者类冲突时可此进行诊断。<br>-verbose:gc<br>输出每次GC的相关情况。<br>-verbose:jni<br>输出native方法调用的相关情况，一般用于诊断jni调用错误信息。</p>
 <h4 id="二、非标准参数又称为扩展参数，一般用到最多的是"><a href="#二、非标准参数又称为扩展参数，一般用到最多的是" class="headerlink" title="二、非标准参数又称为扩展参数，一般用到最多的是"></a>二、非标准参数又称为扩展参数，一般用到最多的是</h4><p>-Xms512m 设置JVM促使内存为512m。此值可以设置与-Xmx相同，以避免每次垃圾回收完成后JVM重新分配内存。<br>-Xmx512m ，设置JVM最大可用内存为512M。<br>-Xmn200m：设置年轻代大小为200M。整个堆大小=年轻代大小 + 年老代大小 + 持久代大小。持久代一般固定大小为64m，所以增大年轻代后，将会减小年老代大小。此值对系统性能影响较大，Sun官方推荐配置为整个堆的3/8。<br>-Xss128k：<br>设置每个线程的堆栈大小。JDK5.0以后每个线程堆栈大小为1M，以前每个线程堆栈大小为256K。更具应用的线程所需内存大小进行调整。在相同物理内存下，减小这个值能生成更多的线程。但是操作系统对一个进程内的线程数还是有限制的，不能无限生成，经验值在3000~5000左右。<br>-Xloggc:file<br>与-verbose:gc功能类似，只是将每次GC事件的相关情况记录到一个文件中，文件的位置最好在本地，以避免网络的潜在问题。<br>若与verbose命令同时出现在命令行中，则以-Xloggc为准。<br>-Xprof<br>跟踪正运行的程序，并将跟踪数据在标准输出输出；适合于开发环境调试。<br>用-XX作为前缀的参数列表在jvm中可能是不健壮的，SUN也不推荐使用，后续可能会在没有通知的情况下就直接取消了；但是由于这些参数中的确有很多是对我们很有用的，比如我们经常会见到的-XX:PermSize、-XX:MaxPermSize等等；<br>首先来介绍行为参数：<br>参数及其默认值 描述<br>-XX:-DisableExplicitGC 禁止调用System.gc()；但jvm的gc仍然有效<br>-XX:+MaxFDLimit 最大化文件描述符的数量限制<br>-XX:+ScavengeBeforeFullGC 新生代GC优先于Full GC执行<br>-XX:+UseGCOverheadLimit 在抛出OOM之前限制jvm耗费在GC上的时间比例<br>-XX:-UseConcMarkSweepGC 对老生代采用并发标记交换算法进行GC<br>-XX:-UseParallelGC 启用并行GC<br>-XX:-UseParallelOldGC 对Full GC启用并行，当-XX:-UseParallelGC启用时该项自动启用<br>-XX:-UseSerialGC 启用串行GC<br>-XX:+UseThreadPriorities 启用本地线程优先级<br>上面表格中黑体的三个参数代表着jvm中GC执行的三种方式，即串行、并行、并发；<br>串行（SerialGC）是jvm的默认GC方式，一般适用于小型应用和单处理器，算法比较简单，GC效率也较高，但可能会给应用带来停顿；<br>并行（ParallelGC）是指GC运行时，对应用程序运行没有影响，GC和app两者的线程在并发执行，这样可以最大限度不影响app的运行；<br>并发（ConcMarkSweepGC）是指多个线程并发执行GC，一般适用于多处理器系统中，可以提高GC的效率，但算法复杂，系统消耗较大；<br>性能调优参数列表：<br>参数及其默认值 描述<br>-XX:LargePageSizeInBytes=4m 设置用于Java堆的大页面尺寸<br>-XX:MaxHeapFreeRatio=70 GC后java堆中空闲量占的最大比例<br>-XX:MaxNewSize=size 新生成对象能占用内存的最大值<br>-XX:MaxPermSize=64m 老生代对象能占用内存的最大值<br>-XX:MinHeapFreeRatio=40 GC后java堆中空闲量占的最小比例<br>-XX:NewRatio=2 新生代内存容量与老生代内存容量的比例<br>-XX:NewSize=2.125m 新生代对象生成时占用内存的默认值<br>-XX:ReservedCodeCacheSize=32m 保留代码占用的内存容量<br>-XX:ThreadStackSize=512 设置线程栈大小，若为0则使用系统默认值<br>-XX:+UseLargePages 使用大页面内存<br>我们在日常性能调优中基本上都会用到以上黑体的这几个属性；<br>调试参数列表：<br>参数及其默认值 描述<br>-XX:-CITime 打印消耗在JIT编译的时间<br>-XX:ErrorFile=./hs_err_pid.log 保存错误日志或者数据到文件中<br>-XX:-ExtendedDTraceProbes 开启solaris特有的dtrace探针<br>-XX:HeapDumpPath=./java_pid.hprof 指定导出堆信息时的路径或文件名<br>-XX:-HeapDumpOnOutOfMemoryError 当首次遭遇OOM时导出此时堆中相关信息<br>-XX:OnError=”;” 出现致命ERROR之后运行自定义命令<br>-XX:OnOutOfMemoryError=”;” 当首次遭遇OOM时执行自定义命令<br>-XX:-PrintClassHistogram 遇到Ctrl-Break后打印类实例的柱状信息，与jmap -histo功能相同<br>-XX:-PrintConcurrentLocks 遇到Ctrl-Break后打印并发锁的相关信息，与jstack -l功能相同<br>-XX:-PrintCommandLineFlags 打印在命令行中出现过的标记<br>-XX:-PrintCompilation 当一个方法被编译时打印相关信息<br>-XX:-PrintGC 每次GC时打印相关信息<br>-XX:-PrintGC Details 每次GC时打印详细信息<br>-XX:-PrintGCTimeStamps 打印每次GC的时间戳<br>-XX:-TraceClassLoading 跟踪类的加载信息<br>-XX:-TraceClassLoadingPreorder 跟踪被引用到的所有类的加载信息<br>-XX:-TraceClassResolution 跟踪常量池<br>-XX:-TraceClassUnloading 跟踪类的卸载信息<br>-XX:-TraceLoaderConstraints 跟踪类加载器约束的相关信息</p>
 
@@ -167,21 +172,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags-JVM"><span class="toc-number">1.</span> <span class="toc-text">tags:JVM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JAVA启动参数共分为三类"><span class="toc-number">1.1.</span> <span class="toc-text">JAVA启动参数共分为三类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、标准参数中比较有用的："><span class="toc-number">1.1.1.</span> <span class="toc-text">一、标准参数中比较有用的：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#verbose"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">verbose</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、非标准参数又称为扩展参数，一般用到最多的是"><span class="toc-number">1.1.2.</span> <span class="toc-text">二、非标准参数又称为扩展参数，一般用到最多的是</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JAVA启动参数共分为三类"><span class="toc-number">1.</span> <span class="toc-text">JAVA启动参数共分为三类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、标准参数中比较有用的："><span class="toc-number">1.1.</span> <span class="toc-text">一、标准参数中比较有用的：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#verbose"><span class="toc-number">1.1.1.</span> <span class="toc-text">verbose</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、非标准参数又称为扩展参数，一般用到最多的是"><span class="toc-number">1.2.</span> <span class="toc-text">二、非标准参数又称为扩展参数，一般用到最多的是</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数共分为三类/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&text=JVM启动参数.md"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&is_video=false&description=JVM启动参数.md"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JVM启动参数.md&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&title=JVM启动参数.md"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/&name=JVM启动参数.md&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
