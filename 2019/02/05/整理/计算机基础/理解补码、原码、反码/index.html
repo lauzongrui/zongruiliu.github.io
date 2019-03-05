@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="大胖熊子">
 <meta property="og:description" content="1. 机器数和真值的区别1.1 机器数一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1. 比如，十进制中的数 +3 ，计算机字长（bit）为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。 那么，这里的 00000011 和 10000011 就是机器数。     1.2 真值因为">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-05T08:31:57.728Z">
+<meta property="og:updated_time" content="2019-03-05T08:45:11.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="补码、原码、反码.md">
 <meta name="twitter:description" content="1. 机器数和真值的区别1.1 机器数一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1. 比如，十进制中的数 +3 ，计算机字长（bit）为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。 那么，这里的 00000011 和 10000011 就是机器数。     1.2 真值因为">
@@ -73,7 +73,7 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/02/05/整理/计算机基础/TCP IP/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/05/整理/计算机基础/浮点数/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2019/02/05/整理/JAVA/JVM/JAVA启动参数共分为三类/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -198,7 +198,7 @@
 <p>$[0000 0001]<em>补 &lt;&lt; 1 = [0000 0010]</em>补 = [0000 0010]_原 = 2$</p>
 <p>负数左移一位：</p>
 <p>$-1=[10000001]<em>原 = [1111 1110]</em>反+1 = [1111 1111]_补$</p>
-<p>$[1111 1111]补 &lt;&lt; 1 = [1111 1110]补 = [1111 1101]<em>反 + 1 = [1000 0010]</em>原 = -2​$</p>
+<p>$[1111 1111]<em>补 &lt;&lt; 1 = [1111 1110]</em>补 = [1111 1101]<em>反 + 1 = [1000 0010]</em>原 = -2$</p>
 <p>$ [1111 1101]<em>反= [1000 0010]</em>原 = -2 ​$</p>
 <h4 id="5-2-右移"><a href="#5-2-右移" class="headerlink" title="5.2 右移"></a>5.2 右移</h4><p><strong>高位保持不变，低位丢弃</strong>。</p>
 <p>正数右移一位：</p>
