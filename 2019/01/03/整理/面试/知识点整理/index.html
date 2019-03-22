@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="title: 知识点整理.mddate: 2019-02-05 16:17:15tags: 面试 基本功1. 面向对象的特征1.1 三大特征1.1.1 封装 定义 封装可以被认为是一个保护屏障，防止该类的代码和数据被外部类定义的代码随机访问。 要访问该类的代码和数据，必须通过严格的接口控制。 封装最主要的功能在于我们能修改自己的实现代码，而不用修改那些调用我们代码的程序片段。 适当的封装可以让程式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大胖熊子">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/index.html">
+<meta property="og:site_name" content="大胖熊子">
+<meta property="og:description" content="title: 知识点整理.mddate: 2019-02-05 16:17:15tags: 面试 基本功1. 面向对象的特征1.1 三大特征1.1.1 封装 定义 封装可以被认为是一个保护屏障，防止该类的代码和数据被外部类定义的代码随机访问。 要访问该类的代码和数据，必须通过严格的接口控制。 封装最主要的功能在于我们能修改自己的实现代码，而不用修改那些调用我们代码的程序片段。 适当的封装可以让程式">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://zongruiliu.github.io/Users/liuzongrui/document/blogs/t-blog/source/_posts/整理/面试/pic/粘性session处理方式.png">
+<meta property="og:image" content="https://zongruiliu.github.io/Users/liuzongrui/document/blogs/t-blog/source/_posts/整理/面试/pic/非粘性session处理方式.png">
+<meta property="og:image" content="https://zongruiliu.github.io/Users/liuzongrui/document/blogs/t-blog/source/_posts/整理/面试/pic/terracotta实现session复制.png">
+<meta property="og:updated_time" content="2019-03-22T19:59:02.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大胖熊子">
+<meta name="twitter:description" content="title: 知识点整理.mddate: 2019-02-05 16:17:15tags: 面试 基本功1. 面向对象的特征1.1 三大特征1.1.1 封装 定义 封装可以被认为是一个保护屏障，防止该类的代码和数据被外部类定义的代码随机访问。 要访问该类的代码和数据，必须通过严格的接口控制。 封装最主要的功能在于我们能修改自己的实现代码，而不用修改那些调用我们代码的程序片段。 适当的封装可以让程式">
+<meta name="twitter:image" content="https://zongruiliu.github.io/Users/liuzongrui/document/blogs/t-blog/source/_posts/整理/面试/pic/粘性session处理方式.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>大胖熊子</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/02/05/整理/数据结构和算法/细度大话数据结构/数据结构绪论/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本功"><span class="toc-number">1.</span> <span class="toc-text">基本功</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-面向对象的特征"><span class="toc-number">1.1.</span> <span class="toc-text">1. 面向对象的特征</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-三大特征"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 三大特征</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-1-1-封装"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.1.1 封装</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-1-2-继承"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">1.1.2 继承</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-1-3-多态性"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">1.1.3 多态性</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-五大原则"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 五大原则</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-final-fianlly-finalize的区别"><span class="toc-number">1.2.</span> <span class="toc-text">2. final,fianlly,finalize的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-简单区别"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 简单区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-中等区别"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 中等区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-详细区别"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 详细区别</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#2-3-1-final"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">2.3.1.final</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-3-2-fianlly"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2.3.2 fianlly</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-3-3-finalize"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">2.3.3 finalize</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-int和Integer的区别与比较"><span class="toc-number">1.3.</span> <span class="toc-text">3. int和Integer的区别与比较</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-int和Integer的区别"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 int和Integer的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-Integer和int的比较"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 Integer和int的比较</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-重载-Overload-和重写-Override-的区别"><span class="toc-number">1.4.</span> <span class="toc-text">4. 重载(Overload)和重写(Override)的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-重写-Override"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 重写(Override)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-1-1-重写规则"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">4.1.1 重写规则</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-重载-Overload"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 重载(Overload)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-2-1-重载规则"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">4.2.1 重载规则</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-区别"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-总结"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-抽象类和接口有什么区别"><span class="toc-number">1.5.</span> <span class="toc-text">5. 抽象类和接口有什么区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-抽象类"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 抽象类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-接口"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3-抽象类和接口的对比"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 抽象类和接口的对比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-什么时候使用抽象类和接口"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.4 什么时候使用抽象类和接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-Java8中的默认方法和静态方法"><span class="toc-number">1.5.5.</span> <span class="toc-text">5.5 Java8中的默认方法和静态方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-说说反射的用途及实现"><span class="toc-number">1.6.</span> <span class="toc-text">6. 说说反射的用途及实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1-Java的反射机制"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 Java的反射机制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-反射的一些注意事项"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 反射的一些注意事项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-反射的实现"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 反射的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-4-反射的用途"><span class="toc-number">1.6.4.</span> <span class="toc-text">6.4 反射的用途</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#6-4-1-判断是否为某个类的实例"><span class="toc-number">1.6.4.1.</span> <span class="toc-text">6.4.1 判断是否为某个类的实例</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-4-2-创建实例"><span class="toc-number">1.6.4.2.</span> <span class="toc-text">6.4.2 创建实例</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-4-3-获取方法"><span class="toc-number">1.6.4.3.</span> <span class="toc-text">6.4.3 获取方法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-4-4-利用反射创建数组"><span class="toc-number">1.6.4.4.</span> <span class="toc-text">6.4.4 利用反射创建数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-说说自定义注解的场景及实现"><span class="toc-number">1.7.</span> <span class="toc-text">7. 说说自定义注解的场景及实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#7-1-元注解"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 元注解</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-2-代码实践"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 代码实践</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-1-自定义一个注解"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">7.2.1 自定义一个注解</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-2-创建一个类来使用该注解"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">7.2.2 创建一个类来使用该注解</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-3-创建测试类，获取注解的属性"><span class="toc-number">1.7.2.3.</span> <span class="toc-text">7.2.3 创建测试类，获取注解的属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-HTTP-请求的-GET-与-POST-方式的区别"><span class="toc-number">1.8.</span> <span class="toc-text">8. HTTP 请求的 GET 与 POST 方式的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-session-与-cookie-区别"><span class="toc-number">1.9.</span> <span class="toc-text">9. session 与 cookie 区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-session-分布式处理"><span class="toc-number">1.10.</span> <span class="toc-text">10. session 分布式处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#10-1-分布式架构下，session会有什么问题"><span class="toc-number">1.10.1.</span> <span class="toc-text">10.1 分布式架构下，session会有什么问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-2-粘性session"><span class="toc-number">1.10.2.</span> <span class="toc-text">10.2  粘性session</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-3-服务器session复制"><span class="toc-number">1.10.3.</span> <span class="toc-text">10.3 服务器session复制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-4-session共享机制"><span class="toc-number">1.10.4.</span> <span class="toc-text">10.4 session共享机制</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#10-4-1-粘性session处理方式"><span class="toc-number">1.10.4.1.</span> <span class="toc-text">10.4.1 粘性session处理方式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10-4-2-非粘性session处理方式"><span class="toc-number">1.10.4.2.</span> <span class="toc-text">10.4.2 非粘性session处理方式</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-5-session持久化到数据库"><span class="toc-number">1.10.5.</span> <span class="toc-text">10.5 session持久化到数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-6-terracotta实现session复制"><span class="toc-number">1.10.6.</span> <span class="toc-text">10.6 terracotta实现session复制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-7-总结"><span class="toc-number">1.10.7.</span> <span class="toc-text">10.7 总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-JDBC-流程"><span class="toc-number">1.11.</span> <span class="toc-text">11. JDBC 流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#11-1-加载Driver类，注册数据库驱动；"><span class="toc-number">1.11.1.</span> <span class="toc-text">11.1 加载Driver类，注册数据库驱动；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-2-通过DriverManager-使用url，用户名和密码建立连接-Connection-；"><span class="toc-number">1.11.2.</span> <span class="toc-text">11.2 通过DriverManager,使用url，用户名和密码建立连接(Connection)；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-3-通过Connection，使用sql语句打开Statement对象；"><span class="toc-number">1.11.3.</span> <span class="toc-text">11.3 通过Connection，使用sql语句打开Statement对象；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-4-执行语句，将结果返回resultSet；"><span class="toc-number">1.11.4.</span> <span class="toc-text">11.4 执行语句，将结果返回resultSet；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-5-对结果resultSet进行处理；"><span class="toc-number">1.11.5.</span> <span class="toc-text">11.5 对结果resultSet进行处理；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-6-倒序释放资源resultSet-gt-preparedStatement-gt-connection。"><span class="toc-number">1.11.6.</span> <span class="toc-text">11.6 倒序释放资源resultSet -&gt; preparedStatement -&gt; connection。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-MVC-设计思想"><span class="toc-number">1.12.</span> <span class="toc-text">12. MVC 设计思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-equals-与-的区别"><span class="toc-number">1.13.</span> <span class="toc-text">13. equals 与 == 的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#13-1-基本数据类型，也称原始数据类型。"><span class="toc-number">1.13.1.</span> <span class="toc-text">13.1 基本数据类型，也称原始数据类型。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13-2-复合数据类型-类"><span class="toc-number">1.13.2.</span> <span class="toc-text">13.2 复合数据类型(类)</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">大胖熊子</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-01-03T14:57:42.335Z" itemprop="datePublished">2019-01-03</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>title: 知识点整理.md<br>date: 2019-02-05 16:17:15<br>tags: 面试</p>
+<h3 id="基本功"><a href="#基本功" class="headerlink" title="基本功"></a>基本功</h3><h4 id="1-面向对象的特征"><a href="#1-面向对象的特征" class="headerlink" title="1. 面向对象的特征"></a>1. 面向对象的特征</h4><h5 id="1-1-三大特征"><a href="#1-1-三大特征" class="headerlink" title="1.1 三大特征"></a>1.1 三大特征</h5><h6 id="1-1-1-封装"><a href="#1-1-1-封装" class="headerlink" title="1.1.1 封装"></a>1.1.1 封装</h6><ul>
+<li><p><strong>定义</strong></p>
+<p>封装可以被认为是一个保护屏障，防止该类的代码和数据被外部类定义的代码随机访问。</p>
+<p>要访问该类的代码和数据，必须通过严格的接口控制。</p>
+<p>封装最主要的功能在于我们能修改自己的实现代码，而不用修改那些调用我们代码的程序片段。</p>
+<p>适当的封装可以让程式码更容易理解与维护，也加强了程式码的安全性。</p>
+</li>
+<li><p><strong>优点</strong></p>
+<ul>
+<li>良好的封装能够减少耦合。</li>
+<li>类内部的结构可以自由修改。</li>
+<li>可以对成员变量进行更精确的控制。</li>
+<li>隐藏信息，实现细节。</li>
+</ul>
+</li>
+</ul>
+<h6 id="1-1-2-继承"><a href="#1-1-2-继承" class="headerlink" title="1.1.2 继承"></a>1.1.2 继承</h6><ul>
+<li><p><strong>定义</strong></p>
+<p>继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为</p>
+</li>
+<li><p><strong>特性</strong></p>
+<ul>
+<li>子类拥有父类非 private 的属性、方法。</li>
+<li>子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。</li>
+<li>子类可以用自己的方式实现父类的方法。</li>
+<li>Java 的继承是单继承，但是可以多重继承，单继承就是一个子类只能继承一个父类，多重继承就是，例如 A 类继承 B 类，B 类继承 C 类，所以按照关系就是 C 类是 B 类的父类，B 类是 A 类的父类，这是 Java 继承区别于 C++ 继承的一个特性。</li>
+<li>提高了类之间的耦合性（继承的缺点，耦合度高就会造成代码之间的联系越紧密，代码独立性越差）。</li>
+</ul>
+</li>
+<li><p><strong>关键字</strong></p>
+<ul>
+<li>extends：类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类</li>
+<li>implements：可以变相的使java具有多继承的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）</li>
+</ul>
+</li>
+</ul>
+<h6 id="1-1-3-多态性"><a href="#1-1-3-多态性" class="headerlink" title="1.1.3 多态性"></a>1.1.3 多态性</h6><ul>
+<li><p><strong>定义</strong></p>
+<p>多态是同一个行为具有多个不同表现形式或形态的能力。</p>
+<p>多态就是同一个接口，使用不同的实例而执行不同操作。</p>
+</li>
+<li><p><strong>优点</strong></p>
+<ul>
+<li>消除类型之间的耦合关系</li>
+<li>可替换性</li>
+<li>可扩充性</li>
+<li>接口性</li>
+<li>灵活性</li>
+<li>简化性</li>
+</ul>
+</li>
+<li><p><strong>多态存在的三个必要条件</strong></p>
+<ul>
+<li>继承</li>
+<li>重写</li>
+<li>父类引用指向子类对象</li>
+</ul>
+</li>
+<li><p><strong>多态的实现方式</strong></p>
+<ul>
+<li>重写</li>
+<li>接口</li>
+<li>抽象类和抽象方法 </li>
+</ul>
+</li>
+</ul>
+<h5 id="1-2-五大原则"><a href="#1-2-五大原则" class="headerlink" title="1.2 五大原则"></a>1.2 五大原则</h5><ul>
+<li><p>单一职责原则（Single-Resposibility Principle） 一个类应该仅有一个引起它变化的原因</p>
+</li>
+<li><p>开放封闭原则（Open-Closed principle） 对扩展是开放的，对更改是封闭的</p>
+</li>
+<li><p>里氏替换原则（Liskov-Substituion Principle） 子类可以替换父类并且出现在父类能够出现的任何地方,贯彻GOF倡导的面向接口编程</p>
+</li>
+<li><p>依赖倒置原则（Dependecy-Inversion Principle） 高层模块不依赖低层模块</p>
+</li>
+<li>ISP 接口隔离原则(Interface-Segregation Principle) 使用多个专门的接口比使用单个接口要好的多</li>
+</ul>
+<h4 id="2-final-fianlly-finalize的区别"><a href="#2-final-fianlly-finalize的区别" class="headerlink" title="2. final,fianlly,finalize的区别"></a>2. final,fianlly,finalize的区别</h4><h5 id="2-1-简单区别"><a href="#2-1-简单区别" class="headerlink" title="2.1 简单区别"></a>2.1 简单区别</h5><ul>
+<li><p>final用于声明属性，方法和类，分别表示属性不可交变，方法不可覆盖，类不可继承。</p>
+</li>
+<li><p>finally是异常处理语句结构的一部分，表示总是执行。</p>
+</li>
+<li><p>finalize是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法，供垃圾收集时的其他资源回收，例如关闭文件等。</p>
+</li>
+</ul>
+<h5 id="2-2-中等区别"><a href="#2-2-中等区别" class="headerlink" title="2.2 中等区别"></a>2.2 中等区别</h5><ul>
+<li><p><strong>final</strong>：java中的关键字，修饰符。</p>
+<ul>
+<li><ol>
+<li>如果一个类被声明为final，就意味着它不能再派生出新的子类，不能作为父类被继承。因此，一个类不能同时被声明为absrtact抽象类的和final的类。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li><p>如果将变量或者方法声明为final，可以保证它们在使用中不被改变。</p>
+<p>2.1 被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取，不可修改。</p>
+<p>2.2 被声明final的方法只能使用，不能重载。</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>finally</strong>：java的一种异常处理机制。</p>
+<p>finally是对Java 异常处理模型的最佳补充。finally 结构使代码总会执行，而不管有无异常发生。使用 finally 可以维护对象的内部状态，并可以清理非内存资源。特别是在关闭数据库连接这方面，如果程序员把数据库连接的close()方法放到finally中，就会大大降低程序出错的几率。</p>
+</li>
+<li><p><strong>finalize</strong>：java中的一个方法名。</p>
+<p>Java技术使用finalize()方法在垃圾收集器将对象从内存中清除出去前，做必要的清理工作。这个方法是由垃圾收集器在确定这个对象没有被引用时对这个对象调用的。它是在Object类中定义的，因此所有的类都继承了它。子类覆盖finalize()方法以整理系统资源或者执行其他清理工作。finalize()方法是在垃圾收集器删除对象之前对这个对象调用的。</p>
+</li>
+</ul>
+<h5 id="2-3-详细区别"><a href="#2-3-详细区别" class="headerlink" title="2.3 详细区别"></a>2.3 详细区别</h5><h6 id="2-3-1-final"><a href="#2-3-1-final" class="headerlink" title="2.3.1.final"></a>2.3.1.final</h6><p>它可以用于以下四个地方：1.定义变量，包括静态的和非静态的。2.定义方法的参数。3.定义方法。4.定义类。</p>
+<ol>
+<li><p>定义变量，包括静态的和非静态的 and 定义方法的参数</p>
+<p>如果final修饰的是一个基本类型，就表示这个变量被赋予的值是不可变的，即它是个常量；</p>
+<p>如果final修饰的是一个对象，就表示这个变量被赋予的引用是不可变的。这里需要提醒大家注意的是，不可改变的只是这个变量所保存的引用，并不是这个引用所指向的对象。</p>
+<p>实际上对于前两种情况，有一种更贴切的表述final的含义的描述，那就是，如果一个变量或方法参数被final修饰，就表示它只能被赋值一次，但是JAVA虚拟机为变量设定的默认值不记作一次赋值。</p>
+<ul>
+<li><strong>被final修饰的变量必须被初始化</strong>。初始化的方式有以下几种：    <ul>
+<li>在定义的时候初始化。     </li>
+<li>final变量可以在初始化块中初始化，不可以在静态初始化块中初始化。    </li>
+<li>静态final变量可以在静态初始化块中初始化，不可以在初始化块中初始化。     </li>
+<li>final变量还可以在类的构造器中初始化，但是静态final变量不可以。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>定义方法</p>
+<p>它表示这个方法不可以被子类重写，但是它这不影响它被子类继承。具有private访问权限的方法也可以增加final修饰，但是由于子无法继承private方法，因此也无法重写它。编译器在处理private方法时，是按照final方来对待的，这样可以提高该方法被调用时的效率。不过子类仍然可以定义同父类中private方法具有同样结构的方法，但是这并不会产生重写的效果，而且它们之间也不存在必然联系。</p>
+</li>
+<li><p>定义类</p>
+<p>String类就是final的。由于final类不允许被继承，编译器在处理时把它的所有方法都当作final的，因此final类比普通类拥有更高的效率。而由关键字abstract定义的抽象类含有必须由继承自它的子类重载实现的抽象方法，因此无法同时用final和abstract来修饰同一个类。同样的道理，final也不能用来修饰接口。 final的类的所有方法都不能被重写，但这并不表示final的类的属性（变量）值也是不可改变的，要想做到final类的属性值不可改变，必须给它增加final修饰</p>
+</li>
+</ol>
+<h6 id="2-3-2-fianlly"><a href="#2-3-2-fianlly" class="headerlink" title="2.3.2 fianlly"></a>2.3.2 fianlly</h6><p>return、continue和break都不能阻止finally语句块的执行。</p>
+<p>return语句被执行后就已经退出当前方法了，finally语句块又如何能被执行呢？</p>
+<p>因此，正确的执行顺序应该是这样的：编译器在编译return new ReturnClass();时，将它分成了两个步骤，new ReturnClass()和return，前一个创建对象的语句是在finally语句块之前被执行的，而后一个return语句是在finally语句块之后执行的，也就是说finally语句块是在程序退出方法之前被执行的。</p>
+<p>同样，finally语句块是在循环被跳过（continue）和中断（break）之前被执行的。</p>
+<h6 id="2-3-3-finalize"><a href="#2-3-3-finalize" class="headerlink" title="2.3.3 finalize"></a>2.3.3 finalize</h6><p>它是一个方法，属于java.lang.Object类，它的定义如下：Java代码protected void finalize() throws Throwable { }众所周知，finalize()方法是GC（garbage collector）运行机制的一部分在此我们只说说finalize()方法的作用是什么呢？finalize()方法是在GC清理它所从属的对象时被调用的，如果执行它的过程中抛出了无法捕获的异常（uncaught exception），GC将终止对改对象的清理，并且该异常会被忽略；直到下一次GC开始清理这个对象时，它的finalize()会被再次调用。</p>
+<h4 id="3-int和Integer的区别与比较"><a href="#3-int和Integer的区别与比较" class="headerlink" title="3. int和Integer的区别与比较"></a>3. int和Integer的区别与比较</h4><h5 id="3-1-int和Integer的区别"><a href="#3-1-int和Integer的区别" class="headerlink" title="3.1 int和Integer的区别"></a>3.1 int和Integer的区别</h5><ul>
+<li>Integer是int的包装类，int则是java的一种基本数据类型 </li>
+<li>Integer变量必须实例化后才能使用，而int变量不需要 </li>
+<li>Integer实际是对象的引用，当new一个Integer时，实际上是生成一个指针指向此对象；而int则是直接存储数据值 </li>
+<li>Integer的默认值是null，int的默认值是0</li>
+</ul>
+<h5 id="3-2-Integer和int的比较"><a href="#3-2-Integer和int的比较" class="headerlink" title="3.2 Integer和int的比较"></a>3.2 Integer和int的比较</h5><p>1、由于Integer变量实际上是对一个Integer对象的引用，所以两个通过new生成的Integer变量永远是不相等的（因为new生成的是两个对象，其内存地址不同）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer i = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line">Integer j = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line">System.out.print(i == j); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>2、Integer变量和int变量比较时，只要两个变量的值是向等的，则结果为true（因为包装类Integer和基本数据类型int比较时，java会自动拆包装为int，然后进行比较，实际上就变为两个int变量的比较）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer i = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line"><span class="keyword">int</span> j = <span class="number">100</span>；</span><br><span class="line">System.out.print(i == j); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>3、非new生成的Integer变量和new Integer()生成的变量比较时，结果为false。（因为非new生成的Integer变量指向的是java常量池中的对象，而new Integer()生成的变量指向堆中新建的对象，两者在内存中的地址不同）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer i = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line">Integer j = <span class="number">100</span>;</span><br><span class="line">System.out.print(i == j); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>4、对于两个非new生成的Integer对象，进行比较时，如果两个变量的值在区间-128到127之间，则比较结果为true，如果两个变量的值不在此区间，则比较结果为false</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Integer i = <span class="number">100</span>;</span><br><span class="line">Integer j = <span class="number">100</span>;</span><br><span class="line">System.out.print(i == j); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">Integer i = <span class="number">128</span>;</span><br><span class="line">Integer j = <span class="number">128</span>;</span><br><span class="line">System.out.print(i == j); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>对于第4条的原因：<br>java在编译Integer i = 100 ;时，会翻译成为Integer i = Integer.valueOf(100)；，而java API中对Integer类型的valueOf的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">   <span class="keyword">assert</span> IntegerCache.high &gt;= <span class="number">127</span>;</span><br><span class="line">   <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)&#123;</span><br><span class="line">      <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>java对于-128到127之间的数，会进行缓存，Integer i = 127时，会将127进行缓存，下次再写Integer j = 127时，就会直接从缓存中取，就不会new了。</p>
+<h4 id="4-重载-Overload-和重写-Override-的区别"><a href="#4-重载-Overload-和重写-Override-的区别" class="headerlink" title="4. 重载(Overload)和重写(Override)的区别"></a>4. 重载(Overload)和重写(Override)的区别</h4><h5 id="4-1-重写-Override"><a href="#4-1-重写-Override" class="headerlink" title="4.1 重写(Override)"></a>4.1 重写(Override)</h5><p>重写是子类对父类的允许访问的方法的实现过程进行重新编写, 返回值和形参都不能改变。<strong>即外壳不变，核心重写！</strong></p>
+<p>重写的好处在于子类可以根据需要，定义特定于自己的行为。 也就是说子类能够根据需要实现父类的方法。</p>
+<p>重写方法不能抛出新的检查异常或者比被重写方法申明更加宽泛的异常。例如： 父类的一个方法申明了一个检查异常 IOException，但是在重写这个方法的时候不能抛出 Exception 异常，因为 Exception 是 IOException 的父类，只能抛出 IOException 的子类异常。</p>
+<h6 id="4-1-1-重写规则"><a href="#4-1-1-重写规则" class="headerlink" title="4.1.1 重写规则"></a>4.1.1 重写规则</h6><ul>
+<li>参数列表必须完全与被重写方法的相同；</li>
+<li>返回类型必须完全与被重写方法的返回类型相同；</li>
+<li>访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。</li>
+<li>父类的成员方法只能被它的子类重写。</li>
+<li>声明为final的方法不能被重写。</li>
+<li>声明为static的方法不能被重写，但是能够被再次声明。</li>
+<li>子类和父类在同一个包中，那么子类可以重写父类所有方法，除了声明为private和final的方法。</li>
+<li>子类和父类不在同一个包中，那么子类只能够重写父类的声明为public和protected的非final方法。</li>
+<li>重写的方法能够抛出任何非强制异常，无论被重写的方法是否抛出异常。但是，重写的方法不能抛出新的强制性异常，或者比被重写方法声明的更广泛的强制性异常，反之则可以。</li>
+<li>构造方法不能被重写。</li>
+<li>如果不能继承一个方法，则不能重写这个方法。</li>
+</ul>
+<h5 id="4-2-重载-Overload"><a href="#4-2-重载-Overload" class="headerlink" title="4.2 重载(Overload)"></a>4.2 重载(Overload)</h5><p>重载(overloading) 是在一个类里面，方法名字相同，而参数不同。返回类型可以相同也可以不同。</p>
+<p>每个重载的方法（或者构造函数）都必须有一个独一无二的参数类型列表。</p>
+<p>最常用的地方就是构造器的重载。</p>
+<h6 id="4-2-1-重载规则"><a href="#4-2-1-重载规则" class="headerlink" title="4.2.1 重载规则"></a>4.2.1 重载规则</h6><ul>
+<li>被重载的方法必须改变参数列表(参数个数或类型不一样)；</li>
+<li>被重载的方法可以改变返回类型；</li>
+<li>被重载的方法可以改变访问修饰符；</li>
+<li>被重载的方法可以声明新的或更广的检查异常；</li>
+<li>方法能够在同一个类中或者在一个子类中被重载。</li>
+<li>无法以返回值类型作为重载函数的区分标准。</li>
+</ul>
+<h5 id="4-3-区别"><a href="#4-3-区别" class="headerlink" title="4.3 区别"></a>4.3 区别</h5><table>
+<thead>
+<tr>
+<th>区别点</th>
+<th>重载方法</th>
+<th>重写方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数列表</td>
+<td>必须修改</td>
+<td>一定不能修改</td>
+</tr>
+<tr>
+<td>返回类型</td>
+<td>可以修改</td>
+<td>一定不能修改</td>
+</tr>
+<tr>
+<td>异常</td>
+<td>可以修改</td>
+<td>可以减少或删除，一定不能抛出新的或者更广的异常</td>
+</tr>
+<tr>
+<td>访问</td>
+<td>可以修改</td>
+<td>一定不能做更严格的限制（可以降低限制）</td>
+</tr>
+</tbody>
+</table>
+<h5 id="4-4-总结"><a href="#4-4-总结" class="headerlink" title="4.4 总结"></a>4.4 总结</h5><p>方法的重写(Overriding)和重载(Overloading)是java多态性的不同表现，重写是父类与子类之间多态性的一种表现，重载可以理解成多态的具体表现形式。</p>
+<ul>
+<li>方法重载是一个类中定义了多个方法名相同，而他们的参数的数量不同或数量相同而类型和次序不同,则称为方法的重载(Overloading)。</li>
+<li>方法重写是在子类存在方法与父类的方法的名字相同，而且参数的个数与类型一样,返回值也一样的方法,就称为重写(Overriding)。</li>
+<li>方法重载是一个类的多态性表现，而方法重写是子类与父类的一种多态性表现。</li>
+</ul>
+<h4 id="5-抽象类和接口有什么区别"><a href="#5-抽象类和接口有什么区别" class="headerlink" title="5. 抽象类和接口有什么区别"></a>5. 抽象类和接口有什么区别</h4><h5 id="5-1-抽象类"><a href="#5-1-抽象类" class="headerlink" title="5.1 抽象类"></a>5.1 抽象类</h5><p>抽象类是用来捕捉子类的通用特性的 。它不能被实例化，只能被用作子类的超类。抽象类是被用来创建继承层级里子类的模板。</p>
+<h5 id="5-2-接口"><a href="#5-2-接口" class="headerlink" title="5.2 接口"></a>5.2 接口</h5><p>接口是抽象方法的集合。如果一个类实现了某个接口，那么它就继承了这个接口的抽象方法。这就像契约模式，如果实现了这个接口，那么就必须确保使用这些方法。接口只是一种形式，接口自身不能做任何事情。</p>
+<h5 id="5-3-抽象类和接口的对比"><a href="#5-3-抽象类和接口的对比" class="headerlink" title="5.3 抽象类和接口的对比"></a>5.3 抽象类和接口的对比</h5><table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th style="text-align:left"><strong>抽象类</strong></th>
+<th><strong>接口</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认的方法实现</td>
+<td style="text-align:left">它可以有默认的方法实现</td>
+<td>接口完全是抽象的。它根本不存在方法的实现</td>
+</tr>
+<tr>
+<td>实现</td>
+<td style="text-align:left">子类使用<strong>extends</strong>关键字来继承抽象类。如果子类不是抽象类的话，它需要提供抽象类中所有声明的方法的实现。</td>
+<td>子类使用关键字<strong>implements</strong>来实现接口。它需要提供接口中所有声明的方法的实现</td>
+</tr>
+<tr>
+<td>构造器</td>
+<td style="text-align:left">抽象类可以有构造器</td>
+<td>接口不能有构造器</td>
+</tr>
+<tr>
+<td>与正常Java类的区别</td>
+<td style="text-align:left">除了你不能实例化抽象类之外，它和普通Java类没有任何区别</td>
+<td>接口是完全不同的类型</td>
+</tr>
+<tr>
+<td>访问修饰符</td>
+<td style="text-align:left">抽象方法可以有<strong>public</strong>、<strong>protected</strong>和<strong>default</strong>这些修饰符</td>
+<td>接口方法默认修饰符是<strong>public</strong>。你不可以使用其它修饰符。</td>
+</tr>
+<tr>
+<td>main方法</td>
+<td style="text-align:left">抽象方法可以有main方法并且我们可以运行它</td>
+<td>接口没有main方法，因此我们不能运行它。</td>
+</tr>
+<tr>
+<td>多继承</td>
+<td style="text-align:left">抽象方法可以继承一个类和实现多个接口</td>
+<td>接口只可以继承一个或多个其它接口</td>
+</tr>
+<tr>
+<td>速度</td>
+<td style="text-align:left">它比接口速度要快</td>
+<td>接口是稍微有点慢的，因为它需要时间去寻找在类中实现的方法。</td>
+</tr>
+<tr>
+<td>添加新方法</td>
+<td style="text-align:left">如果你往抽象类中添加新的方法，你可以给它提供默认的实现。因此你不需要改变你现在的代码。</td>
+<td>如果你往接口中添加方法，那么你必须改变实现该接口的类。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="5-4-什么时候使用抽象类和接口"><a href="#5-4-什么时候使用抽象类和接口" class="headerlink" title="5.4 什么时候使用抽象类和接口"></a>5.4 什么时候使用抽象类和接口</h5><ul>
+<li>如果你拥有一些方法并且想让它们中的一些有默认实现，那么使用抽象类吧。</li>
+<li>如果你想实现多重继承，那么你必须使用接口。由于<strong>Java不支持多继承</strong>，子类不能够继承多个类，但可以实现多个接口。因此你就可以使用接口来解决它。</li>
+<li>如果基本功能在不断改变，那么就需要使用抽象类。如果不断改变基本功能并且使用接口，那么就需要改变所有实现了该接口的类。</li>
+</ul>
+<h5 id="5-5-Java8中的默认方法和静态方法"><a href="#5-5-Java8中的默认方法和静态方法" class="headerlink" title="5.5 Java8中的默认方法和静态方法"></a>5.5 Java8中的默认方法和静态方法</h5><p>Oracle已经开始尝试向接口中引入默认方法和静态方法，以此来减少抽象类和接口之间的差异。现在，我们可以为接口提供默认实现的方法了并且不用强制子类来实现它。这类内容我将在下篇博客进行阐述。</p>
+<h4 id="6-说说反射的用途及实现"><a href="#6-说说反射的用途及实现" class="headerlink" title="6. 说说反射的用途及实现"></a>6. 说说反射的用途及实现</h4><h5 id="6-1-Java的反射机制"><a href="#6-1-Java的反射机制" class="headerlink" title="6.1 Java的反射机制"></a>6.1 Java的反射机制</h5><ul>
+<li><p>在运行时判断任意一个对象所属的类；</p>
+</li>
+<li><p>在运行时构造任意一个类的对象；</p>
+</li>
+<li><p>在运行时判断任意一个类所具有的成员变量和方法（通过反射甚至可以调用private方法）；</p>
+</li>
+<li><p>在运行时调用任意一个对象的方法</p>
+</li>
+</ul>
+<p>重点：<strong>是运行时而不是编译时</strong></p>
+<h5 id="6-2-反射的一些注意事项"><a href="#6-2-反射的一些注意事项" class="headerlink" title="6.2 反射的一些注意事项"></a>6.2 反射的一些注意事项</h5><ul>
+<li><p>由于反射会额外消耗一定的系统资源，因此如果不需要动态地创建一个对象，那么就不需要用反射。</p>
+</li>
+<li><p>另外，反射调用方法时可以忽略权限检查，因此可能会破坏封装性而导致安全问题。</p>
+</li>
+</ul>
+<h5 id="6-3-反射的实现"><a href="#6-3-反射的实现" class="headerlink" title="6.3 反射的实现"></a>6.3 反射的实现</h5><p>获取一个对象对应的反射类，在 Java 中有下列方法可以获取一个对象的反射类</p>
+<ol>
+<li>通过 <code>getClass()</code> 方法</li>
+<li>通过 <code>Class.forName()</code> 方法</li>
+<li>使用 <code>类.class</code></li>
+<li>通过类加载器实现，<code>getClassLoader()</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过getClass方法</span></span><br><span class="line">String s = <span class="string">"text"</span>;</span><br><span class="line">Class&lt;?&gt; c = s.getClass();</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过forName方法</span></span><br><span class="line">Class&lt;?&gt; c1 = Class.forName(<span class="string">"java.lang.String"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用.class</span></span><br><span class="line">Class&lt;String&gt; c2 = String.class;</span><br><span class="line">Class&lt;Integer&gt; type = Integer.TYPE;</span><br></pre></td></tr></table></figure>
+<h5 id="6-4-反射的用途"><a href="#6-4-反射的用途" class="headerlink" title="6.4 反射的用途"></a>6.4 反射的用途</h5><p>Java 反射机制是一个非常强大的功能，在很多的项目比如 Spring，MyBatis 都都可以看到反射的身影。通过反射机制，我们可以在运行期间获取对象的类型信息。利用这一点我们可以实现工厂模式和代理模式等设计模式，同时也可以解决 Java 泛型擦除等令人苦恼的问题。</p>
+<h6 id="6-4-1-判断是否为某个类的实例"><a href="#6-4-1-判断是否为某个类的实例" class="headerlink" title="6.4.1 判断是否为某个类的实例"></a>6.4.1 判断是否为某个类的实例</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; testList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">System.out.println(ArrayList.class.isInstance(testList));</span><br></pre></td></tr></table></figure>
+<h6 id="6-4-2-创建实例"><a href="#6-4-2-创建实例" class="headerlink" title="6.4.2 创建实例"></a>6.4.2 创建实例</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String str = c2.newInstance();</span><br><span class="line">System.out.println(<span class="string">"newInstance 创建实例 : "</span> + str);</span><br><span class="line"><span class="comment">//------</span></span><br><span class="line">Constructor&lt;String&gt; constructor = c2.getConstructor(String.class);</span><br><span class="line">String test = constructor.newInstance(<span class="string">"test"</span>);</span><br><span class="line">System.out.println(<span class="string">"constructor 创建实例 : "</span> + test);</span><br></pre></td></tr></table></figure>
+<h6 id="6-4-3-获取方法"><a href="#6-4-3-获取方法" class="headerlink" title="6.4.3 获取方法"></a>6.4.3 获取方法</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;MethodClass&gt; clazz = MethodClass.class;</span><br><span class="line">MethodClass methodClass = clazz.newInstance();</span><br><span class="line">Method[] methods = clazz.getMethods();</span><br><span class="line">Method[] declaredMethods = clazz.getDeclaredMethods();</span><br><span class="line"><span class="comment">//获取methodClass类的add方法</span></span><br><span class="line">Method method = clazz.getMethod(<span class="string">"add"</span>, <span class="keyword">int</span>.class, <span class="keyword">int</span>.class);</span><br><span class="line">System.out.println(method.invoke(methodClass, <span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line"><span class="comment">//getMethods()方法获取的所有方法</span></span><br><span class="line">System.out.println(<span class="string">"getMethods获取的方法："</span>);</span><br><span class="line"><span class="keyword">for</span> (Method m : methods) &#123;</span><br><span class="line">    System.out.println(m);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//getDeclaredMethods()方法获取的所有方法</span></span><br><span class="line">System.out.println(<span class="string">"getDeclaredMethods获取的方法："</span>);</span><br><span class="line"><span class="keyword">for</span> (Method m : declaredMethods) &#123;</span><br><span class="line">    System.out.println(m);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="6-4-4-利用反射创建数组"><a href="#6-4-4-利用反射创建数组" class="headerlink" title="6.4.4 利用反射创建数组"></a>6.4.4 利用反射创建数组</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; cls = Class.forName(<span class="string">"java.lang.String"</span>);</span><br><span class="line">Object array = Array.newInstance(cls,<span class="number">25</span>);</span><br><span class="line"><span class="comment">//往数组里添加内容</span></span><br><span class="line">Array.set(array,<span class="number">0</span>,<span class="string">"hello"</span>);</span><br><span class="line">Array.set(array,<span class="number">1</span>,<span class="string">"Java"</span>);</span><br><span class="line">Array.set(array,<span class="number">2</span>,<span class="string">"fuck"</span>);</span><br><span class="line">Array.set(array,<span class="number">3</span>,<span class="string">"Scala"</span>);</span><br><span class="line">Array.set(array,<span class="number">4</span>,<span class="string">"Clojure"</span>);</span><br><span class="line"><span class="comment">//获取某一项的内容</span></span><br><span class="line">System.out.println(Array.get(array,<span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="7-说说自定义注解的场景及实现"><a href="#7-说说自定义注解的场景及实现" class="headerlink" title="7. 说说自定义注解的场景及实现"></a>7. 说说自定义注解的场景及实现</h4><h5 id="7-1-元注解"><a href="#7-1-元注解" class="headerlink" title="7.1 元注解"></a>7.1 元注解</h5><ul>
+<li>@Target: 作用：用于描述注解的使用范围（即：被描述的注解可以用在什么地方）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">取值(ElementType)有：</span><br><span class="line">　　　　1.CONSTRUCTOR:用于描述构造器</span><br><span class="line">　　　　2.FIELD:用于描述域</span><br><span class="line">　　　　3.LOCAL_VARIABLE:用于描述局部变量</span><br><span class="line">　　　　4.METHOD:用于描述方法</span><br><span class="line">　　　　5.PACKAGE:用于描述包</span><br><span class="line">　　　　6.PARAMETER:用于描述参数</span><br><span class="line">　　　　7.TYPE:用于描述类、接口(包括注解类型) 或enum声明</span><br></pre></td></tr></table></figure>
+<ul>
+<li>@Retention: 作用：表示需要在什么级别保存该注释信息，用于描述注解的生命周期（即：被描述的注解在什么范围内有效）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">取值（RetentionPoicy）有：</span><br><span class="line">　　　　1.SOURCE:在源文件中有效（即源文件保留）</span><br><span class="line">　　　　2.CLASS:在class文件中有效（即class保留）</span><br><span class="line">　　　　3.RUNTIME:在运行时有效（即运行时保留）</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>@Documented: 用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，因此可以被例如javadoc此类的工具文档化。</p>
+</li>
+<li><p>@Inherited: 如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类。</p>
+</li>
+</ul>
+<h5 id="7-2-代码实践"><a href="#7-2-代码实践" class="headerlink" title="7.2 代码实践"></a>7.2 代码实践</h5><h6 id="7-2-1-自定义一个注解"><a href="#7-2-1-自定义一个注解" class="headerlink" title="7.2.1 自定义一个注解"></a>7.2.1 自定义一个注解</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义@NeedTest注解的保留期限，该注解会保存到目标类的字节码中，并且会被类加载器加载到JVM中</span></span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME) </span><br><span class="line"><span class="comment">// 定义@NeedTest注解的应用目标，这是一个方法级别的注解</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> NeedTest &#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>; <span class="comment">// 单个成员，成员名必须是value(), 默认值是true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="7-2-2-创建一个类来使用该注解"><a href="#7-2-2-创建一个类来使用该注解" class="headerlink" title="7.2.2 创建一个类来使用该注解"></a>7.2.2 创建一个类来使用该注解</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saySomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"say something"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NeedTest</span>(<span class="keyword">true</span>) <span class="comment">// 成员名value()设置为true</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello "</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NeedTest</span>(<span class="keyword">false</span>) <span class="comment">// 成员名value()设置为false</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHi</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hi "</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="7-2-3-创建测试类，获取注解的属性"><a href="#7-2-3-创建测试类，获取注解的属性" class="headerlink" title="7.2.3 创建测试类，获取注解的属性"></a>7.2.3 创建测试类，获取注解的属性</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Class clazz = MyService.class;</span><br><span class="line">        Method[] methods = clazz.getDeclaredMethods();</span><br><span class="line">        <span class="keyword">if</span> (methods.length == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"method "</span> + clazz.getName() + <span class="string">" has no declared method"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">        <span class="comment">// 所有自定义的注解都隐式继承自java.lang.annotation.Annotation接口，但是不允许显示继承其他接口</span></span><br><span class="line">                NeedTest annotation = method.getAnnotation(NeedTest.class); </span><br><span class="line">                <span class="keyword">if</span> (annotation == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"method"</span> + method.getName() + <span class="string">" has not annotated @NeedTest"</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">boolean</span> value = annotation.value();</span><br><span class="line">                    System.out.println(method.getName() + <span class="string">" has annotated @NeedTest and value = "</span> + value);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="8-HTTP-请求的-GET-与-POST-方式的区别"><a href="#8-HTTP-请求的-GET-与-POST-方式的区别" class="headerlink" title="8. HTTP 请求的 GET 与 POST 方式的区别"></a>8. HTTP 请求的 GET 与 POST 方式的区别</h4><ol>
+<li>最直观的就是语义上的区别，get用于获取数据，post用于提交数据。</li>
+<li>get参数有长度限制（受限于url长度，具体的数值取决于浏览器和服务器的限制），而post无限制</li>
+</ol>
+<h4 id="9-session-与-cookie-区别"><a href="#9-session-与-cookie-区别" class="headerlink" title="9. session 与 cookie 区别"></a>9. session 与 cookie 区别</h4><ol>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上。</li>
+<li>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，如果主要考虑到安全应当使用session。</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，如果主要考虑到减轻服务器性能方面，应当使用cookie。</li>
+<li>单个cookie在客户端的限制是3K，就是说一个站点在客户端存放的cookie不能超过3K。</li>
+<li>一般将登陆信息等重要信息存放为session；其他信息如果需要保留，可以放在cookie中</li>
+</ol>
+<h4 id="10-session-分布式处理"><a href="#10-session-分布式处理" class="headerlink" title="10. session 分布式处理"></a>10. session 分布式处理</h4><p>配置参考资料：<a href="http://xstarcd.github.io/wiki/Java/tomcat_cluster.html" target="_blank" rel="noopener">http://xstarcd.github.io/wiki/Java/tomcat_cluster.html</a></p>
+<h5 id="10-1-分布式架构下，session会有什么问题"><a href="#10-1-分布式架构下，session会有什么问题" class="headerlink" title="10.1 分布式架构下，session会有什么问题"></a>10.1 分布式架构下，session会有什么问题</h5><p>搭建完集群环境后，不得不考虑的一个问题就是用户访问产生的session如何处理。如果不做任何处理的话，用户将出现频繁登录的现象，比如集群中存在A、B两台服务器，用户在第一次访问网站时，Nginx通过其负载均衡机制将用户请求转发到A服务器，这时A服务器就会给用户创建一个Session。当用户第二次发送请求时，Nginx将其负载均衡到B服务器，而这时候B服务器并不存在Session，所以就会将用户踢到登录页面。这将大大降低用户体验度，导致用户的流失，这种情况是项目绝不应该出现的。</p>
+<p>我们应当对产生的Session进行处理，通过粘性Session，Session复制或Session共享等方式保证用户的体验度。</p>
+<h5 id="10-2-粘性session"><a href="#10-2-粘性session" class="headerlink" title="10.2  粘性session"></a>10.2  粘性session</h5><ul>
+<li><p><strong>原理</strong>：粘性Session是指将用户锁定到某一个服务器上，比如上面说的例子，用户第一次请求时，负载均衡器将用户的请求转发到了A服务器上，如果负载均衡器设置了粘性Session的话，那么用户以后的每次请求都会转发到A服务器上，相当于把用户和A服务器粘到了一块，这就是粘性Session机制。 </p>
+</li>
+<li><p><strong>优点</strong>：简单，不需要对session做任何处理。 </p>
+</li>
+<li><p><strong>缺点</strong>：缺乏容错性，如果当前访问的服务器发生故障，用户被转移到第二个服务器上时，他的session信息都将失效。</p>
+</li>
+<li><p><strong>适用场景</strong>：发生故障对客户产生的影响较小；服务器发生故障是低概率事件。 </p>
+</li>
+<li><p><strong>实现方式</strong>：以Nginx为例，在upstream模块配置ip_hash属性即可实现粘性Session。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream mycluster&#123;</span><br><span class="line">    #这里添加的是上面启动好的两台Tomcat服务器</span><br><span class="line">    ip_hash;#粘性Session</span><br><span class="line">     server 192.168.22.229:8080 weight=1;</span><br><span class="line">     server 192.168.22.230:8080 weight=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="10-3-服务器session复制"><a href="#10-3-服务器session复制" class="headerlink" title="10.3 服务器session复制"></a>10.3 服务器session复制</h5><ul>
+<li><p><strong>原理</strong>：任何一个服务器上的session发生改变（增删改），该节点会把这个 session的所有内容序列化，然后广播给所有其它节点，不管其他服务器需不需要session，以此来保证Session同步。</p>
+</li>
+<li><p><strong>优点</strong>：可容错，各个服务器间session能够实时响应。 </p>
+</li>
+<li><p><strong>缺点</strong>：会对网络负荷造成一定压力，如果session量大的话可能会造成网络堵塞，拖慢服务器性能。 </p>
+</li>
+<li><p><strong>实现方式</strong>： </p>
+<p>① 设置tomcat，server.xml 开启tomcat集群功能，address:填写本机ip即可，设置端口号，预防端口冲突。</p>
+<p>② 在应用里增加信息：通知应用当前处于集群环境中，支持分布式 在web.xml中添加选项</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--server.xml --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--下面的代码是实现session复制功能--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Cluster</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.tcp.SimpleTcpCluster"</span> <span class="attr">channelSendOptions</span>=<span class="string">"6"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Manager</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.BackupManager"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">expireSessionsOnShutdown</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">notifyListenersOnReplication</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">mapSendOptions</span>=<span class="string">"6"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Channel</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.GroupChannel"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Membership</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.membership.McastService"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">address</span>=<span class="string">"228.0.0.4"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">port</span>=<span class="string">"45564"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">frequency</span>=<span class="string">"500"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">dropTime</span>=<span class="string">"3000"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Receiver</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.transport.nio.NioReceiver"</span></span></span><br><span class="line">                  address="192.168.100.63"    &lt;!—这里填写本机IP地址--&gt;</span><br><span class="line">                  port="5000"</span><br><span class="line">                  selectorTimeout="100" /&gt;</span><br><span class="line">        <span class="tag">&lt;<span class="name">Sender</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.transport.ReplicationTransmitter"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Transport</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.transport.nio.PooledParallelSender"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Sender</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Interceptor</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.interceptors.TcpFailureDetector"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Interceptor</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Interceptor</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.interceptors.ThroughputInterceptor"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Channel</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.tcp.ReplicationValve"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">filter</span>=<span class="string">".*\.gif;.*\.js;.*\.jpg;.*\.png;.*\.htm;.*\.html;.*\.css;.*\.txt;"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.JvmRouteBinderValve"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Deployer</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.deploy.FarmWarDeployer"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">tempDir</span>=<span class="string">"/tmp/war-temp/"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">deployDir</span>=<span class="string">"/tmp/war-deploy/"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">watchDir</span>=<span class="string">"/tmp/war-listen/"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">watchEnabled</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ClusterListener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ClusterListener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.ClusterSessionListener"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Cluster</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--web.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- --&gt;</span> </span><br><span class="line"> <span class="tag">&lt;<span class="name">distributable</span> /&gt;</span>   <span class="comment">&lt;!--增加这个代码才能实现session同步复制功能--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="10-4-session共享机制"><a href="#10-4-session共享机制" class="headerlink" title="10.4 session共享机制"></a>10.4 session共享机制</h5><p>使用分布式缓存方案比如memcached、Redis，但是要求Memcached或Redis必须是集群。 使用Session共享也分两种机制，两种情况如下：</p>
+<h6 id="10-4-1-粘性session处理方式"><a href="#10-4-1-粘性session处理方式" class="headerlink" title="10.4.1 粘性session处理方式"></a>10.4.1 粘性session处理方式</h6><ul>
+<li><p><strong>原理</strong>：不同的 tomcat指定访问不同的主memcached。多个Memcached之间信息是同步的，能主从备份和高可用。用户访问时首先在tomcat中创建session，然后将session复制一份放到它对应的memcahed上。memcache只起备份作用，读写都在tomcat上。当某一个tomcat挂掉后，集群将用户的访问定位到备tomcat上，然后根据cookie中存储的sessionId找session，找不到时，再去相应的memcached上去session，找到之后将其复制到备tomcat上。 </p>
+</li>
+<li><p><strong>配置</strong>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Manager</span> <span class="attr">className</span>=<span class="string">"de.javakaffee.web.msm.MemcachedBackupSessionManager"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">memcachedNodes</span>=<span class="string">"n1:192.168.100.208:11211 n2:192.168.100.208:11311"</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">failoverNodes</span>=<span class="string">"n1"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">requestUriIgnorePattern</span>=<span class="string">".*\.(png|gif|jpg|css|js)$"</span>    </span></span><br><span class="line"><span class="tag">    <span class="attr">memcachedProtocol</span>=<span class="string">"binary"</span>      </span></span><br><span class="line"><span class="tag"> <span class="attr">transcoderFactoryClass</span>=<span class="string">"de.javakaffee.web.msm.serializer.kryo.KryoTranscoderFactory"</span>    </span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  <img src="/Users/liuzongrui/document/blogs/t-blog/source/_posts/整理/面试/pic/粘性session处理方式.png" alt="粘性session处理方式"></p>
+<h6 id="10-4-2-非粘性session处理方式"><a href="#10-4-2-非粘性session处理方式" class="headerlink" title="10.4.2 非粘性session处理方式"></a>10.4.2 非粘性session处理方式</h6><ul>
+<li><p><strong>原理</strong>：memcached做主从复制，写入session都往从memcached服务上写，读取都从主memcached读取，tomcat本身不存储session</p>
+</li>
+<li><p><strong>优点</strong>：可容错，session实时响应。</p>
+</li>
+<li><p><strong>配置</strong>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Manager</span> <span class="attr">className</span>=<span class="string">"de.javakaffee.web.msm.MemcachedBackupSessionManager"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">memcachedNodes</span>=<span class="string">"n1:192.168.100.208:11211 n2:192.168.100.208:11311"</span>     </span></span><br><span class="line"><span class="tag">    <span class="attr">lockingMode</span>=<span class="string">"auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">sticky</span>=<span class="string">"false"</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">requestUriIgnorePattern</span>= <span class="string">".*\.(png|gif|jpg|css|js)$"</span>    </span></span><br><span class="line"><span class="tag">    <span class="attr">sessionBackupAsync</span>= <span class="string">"false"</span>     </span></span><br><span class="line"><span class="tag">    <span class="attr">memcachedProtocol</span>= <span class="string">"binary"</span>  <span class="attr">transcoderFactoryClass</span>=<span class="string">"de.javakaffee.web.msm.serializer.kryo.KryoTranscoderFactory"</span>    </span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/Users/liuzongrui/document/blogs/t-blog/source/_posts/整理/面试/pic/非粘性session处理方式.png" alt="非粘性session处理方式"></p>
+<p> <strong>实现方式</strong>：用开源的msm插件解决tomcat之间的session共享：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Memcached_Session_Manager（MSM）</span><br><span class="line">a. 复制相关jar包到tomcat/lib 目录下</span><br><span class="line">JAVA memcached客户端：spymemcached.jar</span><br><span class="line"></span><br><span class="line">msm项目相关的jar包：</span><br><span class="line"></span><br><span class="line">1. 核心包，memcached-session-manager-&#123;version&#125;.jar</span><br><span class="line">2. Tomcat版本对应的jar包：memcached-session-manager-tc&#123;tomcat-version&#125;-&#123;version&#125;.jar</span><br><span class="line"></span><br><span class="line">序列化工具包：可选kryo，javolution,xstream等，不设置时使用jdk默认序列化。</span><br><span class="line">b. 配置Context.xml ，加入处理Session的Manager</span><br></pre></td></tr></table></figure>
+<h5 id="10-5-session持久化到数据库"><a href="#10-5-session持久化到数据库" class="headerlink" title="10.5 session持久化到数据库"></a>10.5 session持久化到数据库</h5><p>原理：就不用多说了吧，拿出一个数据库，专门用来存储session信息。保证session的持久化。 优点：服务器出现问题，session不会丢失 缺点：如果网站的访问量很大，把session存储到数据库中，会对数据库造成很大压力，还需要增加额外的开销维护数据库.</p>
+<h5 id="10-6-terracotta实现session复制"><a href="#10-6-terracotta实现session复制" class="headerlink" title="10.6 terracotta实现session复制"></a>10.6 terracotta实现session复制</h5><ul>
+<li><p><strong>原理</strong>：Terracotta的基本原理是对于集群间共享的数据，当在一个节点发生变化的时候，Terracotta只把变化的部分发送给Terracotta服务器，然后由服务器把它转发给真正需要这个数据的节点。可以看成是对第二种方案的优化。</p>
+</li>
+<li><p><strong>优点</strong>：这样对网络的压力就非常小，各个节点也不必浪费CPU时间和内存进行大量的序列化操作。把这种集群间数据共享的机制应用在session同步上，既避免了对数据库的依赖，又能达到负载均衡和灾难恢复的效果。</p>
+</li>
+</ul>
+<p><img src="/Users/liuzongrui/document/blogs/t-blog/source/_posts/整理/面试/pic/terracotta实现session复制.png" alt="terracotta实现session复制 "></p>
+<h5 id="10-7-总结"><a href="#10-7-总结" class="headerlink" title="10.7 总结"></a>10.7 总结</h5><p>session的5种处理策略。其中就应用广泛性而言，第三种方式，也就是基于第三方缓存框架共享session，应用的最为广泛，无论是效率还是扩展性都很好。而Terracotta作为一个JVM级的开源群集框架，不仅提供HTTP Session复制，它还能做分布式缓存，POJO群集，跨越群集的JVM来实现分布式应用程序协调等，也值得学习一下。</p>
+<h4 id="11-JDBC-流程"><a href="#11-JDBC-流程" class="headerlink" title="11. JDBC 流程"></a>11. JDBC 流程</h4><h5 id="11-1-加载Driver类，注册数据库驱动；"><a href="#11-1-加载Driver类，注册数据库驱动；" class="headerlink" title="11.1 加载Driver类，注册数据库驱动；"></a>11.1 加载Driver类，注册数据库驱动；</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">"com.sqlite.jdbc.Driver"</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="11-2-通过DriverManager-使用url，用户名和密码建立连接-Connection-；"><a href="#11-2-通过DriverManager-使用url，用户名和密码建立连接-Connection-；" class="headerlink" title="11.2 通过DriverManager,使用url，用户名和密码建立连接(Connection)；"></a>11.2 通过DriverManager,使用url，用户名和密码建立连接(Connection)；</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection = DriverManager.getConnection(<span class="string">"jdbc:sqlite:C:\\db\\test.db"</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="11-3-通过Connection，使用sql语句打开Statement对象；"><a href="#11-3-通过Connection，使用sql语句打开Statement对象；" class="headerlink" title="11.3 通过Connection，使用sql语句打开Statement对象；"></a>11.3 通过Connection，使用sql语句打开Statement对象；</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps = connection.prepareStatement(<span class="string">"select * from student where age =?"</span>);</span><br><span class="line">ps.setInt(<span class="number">1</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="11-4-执行语句，将结果返回resultSet；"><a href="#11-4-执行语句，将结果返回resultSet；" class="headerlink" title="11.4 执行语句，将结果返回resultSet；"></a>11.4 执行语句，将结果返回resultSet；</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resultSet = ps.executeQuery();</span><br></pre></td></tr></table></figure>
+<h5 id="11-5-对结果resultSet进行处理；"><a href="#11-5-对结果resultSet进行处理；" class="headerlink" title="11.5 对结果resultSet进行处理；"></a>11.5 对结果resultSet进行处理；</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">    String name = resultSet.getString(<span class="string">"name"</span>);</span><br><span class="line">    <span class="keyword">int</span> age = resultSet.getInt(<span class="string">"age"</span>);</span><br><span class="line">    System.out.println(<span class="string">"name : "</span> + name + <span class="string">" ,age : "</span> + age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="11-6-倒序释放资源resultSet-gt-preparedStatement-gt-connection。"><a href="#11-6-倒序释放资源resultSet-gt-preparedStatement-gt-connection。" class="headerlink" title="11.6 倒序释放资源resultSet -&gt; preparedStatement -&gt; connection。"></a>11.6 倒序释放资源resultSet -&gt; preparedStatement -&gt; connection。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;&#125;</span><br><span class="line"><span class="keyword">catch</span>()&#123;&#125;</span><br><span class="line"><span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (resultSet != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            resultSet.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (ps != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ps.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="12-MVC-设计思想"><a href="#12-MVC-设计思想" class="headerlink" title="12. MVC 设计思想"></a>12. MVC 设计思想</h4><p>MVC指的就是Model-View-Controller（模型－视图－控制器）</p>
+<h4 id="13-equals-与-的区别"><a href="#13-equals-与-的区别" class="headerlink" title="13. equals 与 == 的区别"></a>13. equals 与 == 的区别</h4><h5 id="13-1-基本数据类型，也称原始数据类型。"><a href="#13-1-基本数据类型，也称原始数据类型。" class="headerlink" title="13.1 基本数据类型，也称原始数据类型。"></a>13.1 基本数据类型，也称原始数据类型。</h5><p><code>byte,short,char,int,long,float,double,boolean</code><br>他们之间的比较，应用双等号==,比较的是他们的值。</p>
+<h5 id="13-2-复合数据类型-类"><a href="#13-2-复合数据类型-类" class="headerlink" title="13.2 复合数据类型(类)"></a>13.2 复合数据类型(类)</h5><p>当他们用（==）进行比较的时候，比较的是他们在内存中的存放地址，所以，除非是同一个new出来的对象，他们的比较后的结果为true，否则比较后结果为false。</p>
+<p>JAVA当中所有的类都是继承于Object这个基类的，在Object中的基类中定义了一个equals的方法，这个方法的初始行为是比较对象的内存地址，但在一些类库当中这个方法被覆盖掉了，如String,Integer,Date在这些类当中equals有其自身的实现，而不再是比较类在堆内存中的存放地址了。<br>  对于复合数据类型之间进行equals比较，在没有覆写equals方法的情况下，他们之间的比较还是基于他们在内存中的存放位置的地址值的，因为Object的equals方法也是用双等号（==）进行比较的，所以比较后的结果跟双等号（==）的结果相同。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本功"><span class="toc-number">1.</span> <span class="toc-text">基本功</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-面向对象的特征"><span class="toc-number">1.1.</span> <span class="toc-text">1. 面向对象的特征</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-三大特征"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 三大特征</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-1-1-封装"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.1.1 封装</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-1-2-继承"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">1.1.2 继承</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-1-3-多态性"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">1.1.3 多态性</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-五大原则"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 五大原则</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-final-fianlly-finalize的区别"><span class="toc-number">1.2.</span> <span class="toc-text">2. final,fianlly,finalize的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-简单区别"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 简单区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-中等区别"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 中等区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-详细区别"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 详细区别</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#2-3-1-final"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">2.3.1.final</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-3-2-fianlly"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2.3.2 fianlly</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-3-3-finalize"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">2.3.3 finalize</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-int和Integer的区别与比较"><span class="toc-number">1.3.</span> <span class="toc-text">3. int和Integer的区别与比较</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-int和Integer的区别"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 int和Integer的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-Integer和int的比较"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 Integer和int的比较</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-重载-Overload-和重写-Override-的区别"><span class="toc-number">1.4.</span> <span class="toc-text">4. 重载(Overload)和重写(Override)的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-重写-Override"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 重写(Override)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-1-1-重写规则"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">4.1.1 重写规则</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-重载-Overload"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 重载(Overload)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-2-1-重载规则"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">4.2.1 重载规则</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-区别"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-总结"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-抽象类和接口有什么区别"><span class="toc-number">1.5.</span> <span class="toc-text">5. 抽象类和接口有什么区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-抽象类"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 抽象类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-接口"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3-抽象类和接口的对比"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 抽象类和接口的对比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-什么时候使用抽象类和接口"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.4 什么时候使用抽象类和接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-Java8中的默认方法和静态方法"><span class="toc-number">1.5.5.</span> <span class="toc-text">5.5 Java8中的默认方法和静态方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-说说反射的用途及实现"><span class="toc-number">1.6.</span> <span class="toc-text">6. 说说反射的用途及实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1-Java的反射机制"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 Java的反射机制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-反射的一些注意事项"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 反射的一些注意事项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-反射的实现"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 反射的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-4-反射的用途"><span class="toc-number">1.6.4.</span> <span class="toc-text">6.4 反射的用途</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#6-4-1-判断是否为某个类的实例"><span class="toc-number">1.6.4.1.</span> <span class="toc-text">6.4.1 判断是否为某个类的实例</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-4-2-创建实例"><span class="toc-number">1.6.4.2.</span> <span class="toc-text">6.4.2 创建实例</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-4-3-获取方法"><span class="toc-number">1.6.4.3.</span> <span class="toc-text">6.4.3 获取方法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-4-4-利用反射创建数组"><span class="toc-number">1.6.4.4.</span> <span class="toc-text">6.4.4 利用反射创建数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-说说自定义注解的场景及实现"><span class="toc-number">1.7.</span> <span class="toc-text">7. 说说自定义注解的场景及实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#7-1-元注解"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 元注解</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-2-代码实践"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 代码实践</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-1-自定义一个注解"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">7.2.1 自定义一个注解</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-2-创建一个类来使用该注解"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">7.2.2 创建一个类来使用该注解</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-3-创建测试类，获取注解的属性"><span class="toc-number">1.7.2.3.</span> <span class="toc-text">7.2.3 创建测试类，获取注解的属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-HTTP-请求的-GET-与-POST-方式的区别"><span class="toc-number">1.8.</span> <span class="toc-text">8. HTTP 请求的 GET 与 POST 方式的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-session-与-cookie-区别"><span class="toc-number">1.9.</span> <span class="toc-text">9. session 与 cookie 区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-session-分布式处理"><span class="toc-number">1.10.</span> <span class="toc-text">10. session 分布式处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#10-1-分布式架构下，session会有什么问题"><span class="toc-number">1.10.1.</span> <span class="toc-text">10.1 分布式架构下，session会有什么问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-2-粘性session"><span class="toc-number">1.10.2.</span> <span class="toc-text">10.2  粘性session</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-3-服务器session复制"><span class="toc-number">1.10.3.</span> <span class="toc-text">10.3 服务器session复制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-4-session共享机制"><span class="toc-number">1.10.4.</span> <span class="toc-text">10.4 session共享机制</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#10-4-1-粘性session处理方式"><span class="toc-number">1.10.4.1.</span> <span class="toc-text">10.4.1 粘性session处理方式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10-4-2-非粘性session处理方式"><span class="toc-number">1.10.4.2.</span> <span class="toc-text">10.4.2 非粘性session处理方式</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-5-session持久化到数据库"><span class="toc-number">1.10.5.</span> <span class="toc-text">10.5 session持久化到数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-6-terracotta实现session复制"><span class="toc-number">1.10.6.</span> <span class="toc-text">10.6 terracotta实现session复制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-7-总结"><span class="toc-number">1.10.7.</span> <span class="toc-text">10.7 总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-JDBC-流程"><span class="toc-number">1.11.</span> <span class="toc-text">11. JDBC 流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#11-1-加载Driver类，注册数据库驱动；"><span class="toc-number">1.11.1.</span> <span class="toc-text">11.1 加载Driver类，注册数据库驱动；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-2-通过DriverManager-使用url，用户名和密码建立连接-Connection-；"><span class="toc-number">1.11.2.</span> <span class="toc-text">11.2 通过DriverManager,使用url，用户名和密码建立连接(Connection)；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-3-通过Connection，使用sql语句打开Statement对象；"><span class="toc-number">1.11.3.</span> <span class="toc-text">11.3 通过Connection，使用sql语句打开Statement对象；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-4-执行语句，将结果返回resultSet；"><span class="toc-number">1.11.4.</span> <span class="toc-text">11.4 执行语句，将结果返回resultSet；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-5-对结果resultSet进行处理；"><span class="toc-number">1.11.5.</span> <span class="toc-text">11.5 对结果resultSet进行处理；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-6-倒序释放资源resultSet-gt-preparedStatement-gt-connection。"><span class="toc-number">1.11.6.</span> <span class="toc-text">11.6 倒序释放资源resultSet -&gt; preparedStatement -&gt; connection。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-MVC-设计思想"><span class="toc-number">1.12.</span> <span class="toc-text">12. MVC 设计思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-equals-与-的区别"><span class="toc-number">1.13.</span> <span class="toc-text">13. equals 与 == 的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#13-1-基本数据类型，也称原始数据类型。"><span class="toc-number">1.13.1.</span> <span class="toc-text">13.1 基本数据类型，也称原始数据类型。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13-2-复合数据类型-类"><span class="toc-number">1.13.2.</span> <span class="toc-text">13.2 复合数据类型(类)</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/01/03/整理/面试/知识点整理/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 liuzongrui
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
