@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="数据库数据库事务特性  1.原子性Atomicity一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。 2.一致性Consistency一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：  强一致性：读操作可以立即读到提交的更新操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大胖熊子">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/index.html">
+<meta property="og:site_name" content="大胖熊子">
+<meta property="og:description" content="数据库数据库事务特性  1.原子性Atomicity一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。 2.一致性Consistency一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：  强一致性：读操作可以立即读到提交的更新操">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wpsrOEr74.jpg">
+<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wps5VufaP.jpg">
+<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wpsvFTrXY.jpg">
+<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wps9T2jg4.jpg">
+<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wpsIliG5Z.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/3/10/1620fc30782107d1?imageslim">
+<meta property="og:updated_time" content="2019-05-01T15:14:01.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大胖熊子">
+<meta name="twitter:description" content="数据库数据库事务特性  1.原子性Atomicity一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。 2.一致性Consistency一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：  强一致性：读操作可以立即读到提交的更新操">
+<meta name="twitter:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wpsrOEr74.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>大胖熊子</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/02/06/整理/JAVA/并发与多线程/并发与多线程/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库"><span class="toc-number">1.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库事务特性"><span class="toc-number">2.</span> <span class="toc-text">数据库事务特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-原子性Atomicity"><span class="toc-number">2.1.</span> <span class="toc-text">1.原子性Atomicity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-一致性Consistency"><span class="toc-number">2.2.</span> <span class="toc-text">2.一致性Consistency</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-隔离性Isolation"><span class="toc-number">2.3.</span> <span class="toc-text">3.隔离性Isolation</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#并发问题"><span class="toc-number">2.3.1.</span> <span class="toc-text">并发问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#事务的隔离级别从低到高有"><span class="toc-number">2.3.2.</span> <span class="toc-text">事务的隔离级别从低到高有</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-持久性Durability"><span class="toc-number">2.4.</span> <span class="toc-text">4.持久性Durability</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务分类"><span class="toc-number">3.</span> <span class="toc-text">事务分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-扁平化事务"><span class="toc-number">3.1.</span> <span class="toc-text">1.扁平化事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-带保存点的扁平事务"><span class="toc-number">3.2.</span> <span class="toc-text">2.带保存点的扁平事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-链事务"><span class="toc-number">3.3.</span> <span class="toc-text">3.链事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-嵌套事务"><span class="toc-number">3.4.</span> <span class="toc-text">4.嵌套事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-分布式事务"><span class="toc-number">3.5.</span> <span class="toc-text">5.分布式事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-分布式事务解决方案："><span class="toc-number">3.6.</span> <span class="toc-text">6.分布式事务解决方案：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#XA规范—-2PC（两段式提交）、3PC（三段式提交）"><span class="toc-number">3.6.1.</span> <span class="toc-text">XA规范— 2PC（两段式提交）、3PC（三段式提交）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#TCC"><span class="toc-number">3.6.2.</span> <span class="toc-text">TCC</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#消息一致性事务"><span class="toc-number">3.6.3.</span> <span class="toc-text">消息一致性事务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GTS-Fescar-Seata"><span class="toc-number">3.6.4.</span> <span class="toc-text">GTS/Fescar/Seata</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">大胖熊子</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-05-01T12:42:22.014Z" itemprop="datePublished">2019-05-01</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a><strong>数据库</strong></h3><h3 id="数据库事务特性"><a href="#数据库事务特性" class="headerlink" title="数据库事务特性"></a>数据库事务特性</h3><p><img src="数据库事务/wpsrOEr74.jpg" alt="img"> </p>
+<h4 id="1-原子性Atomicity"><a href="#1-原子性Atomicity" class="headerlink" title="1.原子性Atomicity"></a>1.原子性Atomicity</h4><p>一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。</p>
+<h4 id="2-一致性Consistency"><a href="#2-一致性Consistency" class="headerlink" title="2.一致性Consistency"></a>2.一致性Consistency</h4><p>一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：</p>
+<ul>
+<li><p><strong>强一致性</strong>：读操作可以立即读到提交的更新操作。</p>
+</li>
+<li><p><strong>弱一致性</strong>：提交的更新操作，不一定立即会被读操作读到，此种情况会存在一个不一致窗口，指的是读操作可以读到最新值的一段时间。</p>
+</li>
+<li><p><strong>最终一致性</strong>：是弱一致性的特例。事务更新一份数据，最终一致性保证在没有其他事务更新同样的值的话，最终所有的事务都会读到之前事务更新的最新值。如果没有错误发生，不一致窗口的大小依赖于：通信延迟，系统负载等。</p>
+</li>
+</ul>
+<p>其他一致性变体还有：</p>
+<ul>
+<li><p><strong>单调一致性</strong>：如果一个进程已经读到一个值，那么后续不会读到更早的值。</p>
+</li>
+<li><p><strong>会话一致性</strong>：保证客户端和服务器交互的会话过程中，读操作可以读到更新操作后的最新值。</p>
+</li>
+</ul>
+<h4 id="3-隔离性Isolation"><a href="#3-隔离性Isolation" class="headerlink" title="3.隔离性Isolation"></a>3.隔离性Isolation</h4><p>并发事务之间互相影响的程度，比如一个事务会不会读取到另一个未提交的事务修改的数据。</p>
+<h5 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h5><ul>
+<li><strong>脏读</strong>：指一个事务中访问到了另外一个事务未提交的数据。</li>
+</ul>
+<p><img src="数据库事务/wps5VufaP.jpg" alt="img"> </p>
+<ul>
+<li><strong>不可重复读</strong>：是指在一个事务内根据同一个条件对行记录进行多次查询，但是搜出来的结果却不一致。发生不可重复读的原因是在多次搜索期间查询条件覆盖的数据被其他事务修改了。</li>
+</ul>
+<p><img src="数据库事务/wpsvFTrXY.jpg" alt="img"> </p>
+<ul>
+<li><strong>幻读</strong>：指同一个事务内多次查询返回的结果集不一样（比如增加了或者减少了行记录）。比如同一个事务A内第一次查询时候有n条记录，但是第二次同等条件下查询却又n+1条记录，这就好像产生了幻觉，为啥两次结果不一样那。其实和不可重复读一样，发生幻读的原因也是另外一个事务新增或者删除或者修改了第一个事务结果集里面的数据。不同在于不可重复读是同一个记录的数据内容被修改了，幻读是数据行记录变多了或者少了。</li>
+</ul>
+<p><img src="数据库事务/wps9T2jg4.jpg" alt="img"> </p>
+<h5 id="事务的隔离级别从低到高有"><a href="#事务的隔离级别从低到高有" class="headerlink" title="事务的隔离级别从低到高有"></a>事务的隔离级别从低到高有</h5><ul>
+<li><p><strong>读未提交Read Uncommitted</strong>：最低的隔离级别，什么都不需要做，一个事务可以读到另一个事务未提交的结果。所有的并发事务问题都会发生。 </p>
+</li>
+<li><p><strong>读已提交Read Committed</strong>：只有在事务提交后，其更新结果才会被其他事务看见。可以解决脏读问题。</p>
+</li>
+<li><p><strong>可重复读Repeated Read</strong>：在一个事务中，对于同一份数据的读取结果总是相同的，无论是否有其他事务对这份数据进行操作，以及这个事务是否提交。可以解决脏读、不可重复读。</p>
+</li>
+<li><p><strong>串行化Serialization</strong>：事务串行化执行，隔离级别最高，牺牲了系统的并发性。可以解决并发事务的所有问题。</p>
+</li>
+</ul>
+<p><img src="数据库事务/wpsIliG5Z.jpg" alt="img"> </p>
+<h4 id="4-持久性Durability"><a href="#4-持久性Durability" class="headerlink" title="4.持久性Durability"></a>4.持久性Durability</h4><p>事务提交后，对系统的影响是永久的。</p>
+<h3 id="事务分类"><a href="#事务分类" class="headerlink" title="事务分类"></a><strong>事务分类</strong></h3><h4 id="1-扁平化事务"><a href="#1-扁平化事务" class="headerlink" title="1.扁平化事务"></a>1.扁平化事务</h4><p>所有操作都在同一层次，主要限值是不能提交或者回滚事务的某一部分，要么都提交，要么都回滚。</p>
+<h4 id="2-带保存点的扁平事务"><a href="#2-带保存点的扁平事务" class="headerlink" title="2.带保存点的扁平事务"></a>2.带保存点的扁平事务</h4><p>为了解决第一种事务的弊端，允许事务在执行过程中回滚到较早的状态，而不是全部回滚。通过在事务中插入保存点，当操作失败后，可以选择回滚到最近的保存点处。可以回滚到任意保存点。</p>
+<h4 id="3-链事务"><a href="#3-链事务" class="headerlink" title="3.链事务"></a>3.链事务</h4><p>可以看做第2种事务的变种，在事务提交时，会将必要的上下文隐式传递给下一个事务，但事务失败时，可以回滚到最近的事务，不过链事务只能回滚到最近的保存点。</p>
+<h4 id="4-嵌套事务"><a href="#4-嵌套事务" class="headerlink" title="4.嵌套事务"></a>4.嵌套事务</h4><p>由顶层事务和子事务构成，类似于树的结构，一般顶层事务负责逻辑处理，子事务负责具体的工作。子事务可以提交，但真正的提交要等到父事务的提交，如果上层事务回滚，那么所有的子事务都会回滚。</p>
+<h4 id="5-分布式事务"><a href="#5-分布式事务" class="headerlink" title="5.分布式事务"></a>5.分布式事务</h4><p>指在分布式环境中的扁平化事务</p>
+<h4 id="6-分布式事务解决方案："><a href="#6-分布式事务解决方案：" class="headerlink" title="6.分布式事务解决方案："></a>6.分布式事务解决方案：</h4><h5 id="XA规范—-2PC（两段式提交）、3PC（三段式提交）"><a href="#XA规范—-2PC（两段式提交）、3PC（三段式提交）" class="headerlink" title="XA规范— 2PC（两段式提交）、3PC（三段式提交）"></a>XA规范— 2PC（两段式提交）、3PC（三段式提交）</h5><p>保证强一致性的刚性事务方案。</p>
+<ul>
+<li>2PC：分布式系统的一个难点是如何保证架构下多个节点在进行事务性操作的时候保持一致性。为实现这个目的，二阶段提交算法的成立基于以下假设：<ul>
+<li>该分布式系统中，存在一个节点作为协调者(Coordinator)，其他节点作为参与者(Cohorts)。且节点之间可以进行网络通信。</li>
+<li>所有节点都采用预写式日志，且日志被写入后即被保持在可靠的存储设备上，即使节点损坏不会导致日志数据的消失。</li>
+<li>所有节点不会永久性损坏，即使损坏后仍然可以恢复。</li>
+</ul>
+</li>
+</ul>
+<h5 id="TCC"><a href="#TCC" class="headerlink" title="TCC"></a>TCC</h5><p>TCC即为Try Confirm Cancel，TCC属于补偿型分布式事务，是满足最终一致性的柔性事务方案。</p>
+<ul>
+<li><p>Try：尝试待执行的业务<br>这个过程并未执行业务，只是完成所有业务的一致性检查，并预留好执行所需的全部资源</p>
+</li>
+<li><p>Confirm：执行业务<br>这个过程真正开始执行业务，由于Try阶段已经完成了一致性检查，因此本过程直接执行，而不做任何检查。并且在执行的过程中，会使用到Try阶段预留的业务资源。</p>
+</li>
+<li><p>Cancel：取消执行的业务<br>若业务执行失败，则进入Cancel阶段，它会释放所有占用的业务资源，并回滚Confirm阶段执行的操作。</p>
+</li>
+</ul>
+<h5 id="消息一致性事务"><a href="#消息一致性事务" class="headerlink" title="消息一致性事务"></a>消息一致性事务</h5><p>将本地操作和发送消息封装在一个事务中，保证本地的操作和消息的发送要么都成功，要么都失败，下个应用订阅消息，收到消息后执行对应的操作。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/3/10/1620fc30782107d1?imageslim" alt="img"></p>
+<ul>
+<li><p>在系统A处理任务A前，首先向消息中间件发送一条消息</p>
+</li>
+<li><p>消息中间件收到后将该条消息持久化，但并不投递。此时下游系统B仍然不知道该条消息的存在。</p>
+</li>
+<li><p>消息中间件持久化成功后，便向系统A返回一个确认应答；</p>
+</li>
+<li><p>系统A收到确认应答后，则可以开始处理任务A；</p>
+</li>
+<li><p>任务A处理完成后，向消息中间件发送Commit请求。该请求发送完成后，对系统A而言，该事务的处理过程就结束了，此时它可以处理别的任务了。 但commit消息可能会在传输途中丢失，从而消息中间件并不会向系统B投递这条消息，从而系统就会出现不一致性。这个问题由消息中间件的事务回查机制完成，下文会介绍。</p>
+</li>
+<li><p>消息中间件收到Commit指令后，便向系统B投递该消息，从而触发任务B的执行；</p>
+</li>
+<li><p>当任务B执行完成后，系统B向消息中间件返回一个确认应答，告诉消息中间件该消息已经成功消费，此时，这个分布式事务完成。</p>
+</li>
+</ul>
+<h5 id="GTS-Fescar-Seata"><a href="#GTS-Fescar-Seata" class="headerlink" title="GTS/Fescar/Seata"></a>GTS/Fescar/Seata</h5><p>Fescar基于两段式提交进行改良，剥离分布式事务方案对数据库在协议支持上的要求，使用Fescar的前提，是分支事务中涉及的资源必须是支持ACID事务的关系型数据，分支的提交和回滚机制都依赖于本地事务来保证。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库"><span class="toc-number">1.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库事务特性"><span class="toc-number">2.</span> <span class="toc-text">数据库事务特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-原子性Atomicity"><span class="toc-number">2.1.</span> <span class="toc-text">1.原子性Atomicity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-一致性Consistency"><span class="toc-number">2.2.</span> <span class="toc-text">2.一致性Consistency</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-隔离性Isolation"><span class="toc-number">2.3.</span> <span class="toc-text">3.隔离性Isolation</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#并发问题"><span class="toc-number">2.3.1.</span> <span class="toc-text">并发问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#事务的隔离级别从低到高有"><span class="toc-number">2.3.2.</span> <span class="toc-text">事务的隔离级别从低到高有</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-持久性Durability"><span class="toc-number">2.4.</span> <span class="toc-text">4.持久性Durability</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务分类"><span class="toc-number">3.</span> <span class="toc-text">事务分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-扁平化事务"><span class="toc-number">3.1.</span> <span class="toc-text">1.扁平化事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-带保存点的扁平事务"><span class="toc-number">3.2.</span> <span class="toc-text">2.带保存点的扁平事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-链事务"><span class="toc-number">3.3.</span> <span class="toc-text">3.链事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-嵌套事务"><span class="toc-number">3.4.</span> <span class="toc-text">4.嵌套事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-分布式事务"><span class="toc-number">3.5.</span> <span class="toc-text">5.分布式事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-分布式事务解决方案："><span class="toc-number">3.6.</span> <span class="toc-text">6.分布式事务解决方案：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#XA规范—-2PC（两段式提交）、3PC（三段式提交）"><span class="toc-number">3.6.1.</span> <span class="toc-text">XA规范— 2PC（两段式提交）、3PC（三段式提交）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#TCC"><span class="toc-number">3.6.2.</span> <span class="toc-text">TCC</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#消息一致性事务"><span class="toc-number">3.6.3.</span> <span class="toc-text">消息一致性事务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GTS-Fescar-Seata"><span class="toc-number">3.6.4.</span> <span class="toc-text">GTS/Fescar/Seata</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 liuzongrui
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
