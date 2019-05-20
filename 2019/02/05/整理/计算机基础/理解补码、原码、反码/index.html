@@ -9,14 +9,14 @@
     <meta name="description" content="1. 机器数和真值的区别1.1 机器数一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1. 比如，十进制中的数 +3 ，计算机字长（bit）为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。 那么，这里的 00000011 和 10000011 就是机器数。     1.2 真值因为">
 <meta name="keywords" content="计算机基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="补码、原码、反码.md">
+<meta property="og:title" content="补码、原码、反码">
 <meta property="og:url" content="https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/index.html">
 <meta property="og:site_name" content="大胖熊子">
 <meta property="og:description" content="1. 机器数和真值的区别1.1 机器数一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1. 比如，十进制中的数 +3 ，计算机字长（bit）为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。 那么，这里的 00000011 和 10000011 就是机器数。     1.2 真值因为">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-06T01:43:17.503Z">
+<meta property="og:updated_time" content="2019-05-20T05:26:15.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="补码、原码、反码.md">
+<meta name="twitter:title" content="补码、原码、反码">
 <meta name="twitter:description" content="1. 机器数和真值的区别1.1 机器数一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1. 比如，十进制中的数 +3 ，计算机字长（bit）为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。 那么，这里的 00000011 和 10000011 就是机器数。     1.2 真值因为">
     
     
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>补码、原码、反码.md</title>
+    <title>补码、原码、反码</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -73,10 +73,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/02/05/整理/计算机基础/浮点数/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/05/整理/数据结构和算法/数组/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/02/05/整理/数据结构和算法/细度大话数据结构/数据结构绪论/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/05/整理/JAVA/JVM/JAVA启动参数/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -90,15 +90,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&text=补码、原码、反码.md"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&is_video=false&description=补码、原码、反码.md"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=补码、原码、反码.md&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&name=补码、原码、反码.md&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&text=补码、原码、反码"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&is_video=false&description=补码、原码、反码"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=补码、原码、反码&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&name=补码、原码、反码&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -115,7 +115,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        补码、原码、反码.md
+        补码、原码、反码
     </h1>
 
 
@@ -195,19 +195,19 @@
 <h4 id="5-1-左移"><a href="#5-1-左移" class="headerlink" title="5.1 左移"></a>5.1 左移</h4><p><strong>左移：高位丢弃，低位补零。</strong></p>
 <p>正数左移一位：</p>
 <p>$$ 1=[00000001]_补 $$</p>
-<p>$$[0000 0001]<em>补 &lt;&lt; 1 = [0000 0010]</em>补 = [0000 0010]_原 = 2​$$</p>
+<p>$$[0000 0001]<em>补 &lt;&lt; 1 = [0000 0010]</em>补 = [0000 0010]_原 = 2$$</p>
 <p>负数左移一位：</p>
-<p>$$-1=[10000001]<em>原 = [1111 1110]</em>反+1 = [1111 1111]_补​$$</p>
+<p>$$-1=[10000001]<em>原 = [1111 1110]</em>反+1 = [1111 1111]_补$$</p>
 <p>$$[1111 1111]<em>补 &lt;&lt; 1 = [1111 1110]</em>补 = [1111 1101]<em>反 + 1 = [1000 0010]</em>原 = -2$$</p>
-<p>$$ [1111 1101]<em>反= [1000 0010]</em>原 = -2 ​$$</p>
+<p>$$ [1111 1101]<em>反= [1000 0010]</em>原 = -2 $$</p>
 <h4 id="5-2-右移"><a href="#5-2-右移" class="headerlink" title="5.2 右移"></a>5.2 右移</h4><p><strong>高位保持不变，低位丢弃</strong>。</p>
 <p>正数右移一位：</p>
 <p>$$127 = [0111 1111]<em>原 = [0111 1111]</em>补$$</p>
-<p>$$ [0111 1111]<em>补 &gt;&gt; 1 =  [0011 1111]</em>补 =  [011 1111]_原= 63 ​$$</p>
+<p>$$ [0111 1111]<em>补 &gt;&gt; 1 =  [0011 1111]</em>补 =  [011 1111]_原= 63 $$</p>
 <p>负数右移一位：</p>
 <p>$$-127 = [1111 1111]<em>原 = [1000 0001]</em>补$$</p>
 <p>$$[1000 0001]<em>补 &gt;&gt; 1 = [1100 0000]</em>补 = [1011 1111]_反 + 1$$</p>
-<p>$$ [1011 1111]<em>反 = [1100 0000]</em>原 = -64​$$</p>
+<p>$$ [1011 1111]<em>反 = [1100 0000]</em>原 = -64$$</p>
 
   </div>
 </article>
@@ -239,15 +239,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&text=补码、原码、反码.md"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&is_video=false&description=补码、原码、反码.md"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=补码、原码、反码.md&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码.md"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&name=补码、原码、反码.md&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&text=补码、原码、反码"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&is_video=false&description=补码、原码、反码"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=补码、原码、反码&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&title=补码、原码、反码"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/计算机基础/理解补码、原码、反码/&name=补码、原码、反码&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

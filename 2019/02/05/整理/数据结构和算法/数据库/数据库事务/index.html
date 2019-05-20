@@ -6,24 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="数据库数据库事务特性  1.原子性Atomicity一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。 2.一致性Consistency一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：  强一致性：读操作可以立即读到提交的更新操">
+    <meta name="description" content="数据库数据库事务特性1.原子性Atomicity一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。 2.一致性Consistency一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：  强一致性：读操作可以立即读到提交的更新操作。">
+<meta name="keywords" content="计算机基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大胖熊子">
-<meta property="og:url" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/index.html">
+<meta property="og:title" content="数据库事务">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/index.html">
 <meta property="og:site_name" content="大胖熊子">
-<meta property="og:description" content="数据库数据库事务特性  1.原子性Atomicity一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。 2.一致性Consistency一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：  强一致性：读操作可以立即读到提交的更新操">
+<meta property="og:description" content="数据库数据库事务特性1.原子性Atomicity一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。 2.一致性Consistency一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：  强一致性：读操作可以立即读到提交的更新操作。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wpsrOEr74.jpg">
-<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wps5VufaP.jpg">
-<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wpsvFTrXY.jpg">
-<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wps9T2jg4.jpg">
-<meta property="og:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wpsIliG5Z.jpg">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/3/10/1620fc30782107d1?imageslim">
-<meta property="og:updated_time" content="2019-05-01T15:14:01.606Z">
+<meta property="og:updated_time" content="2019-05-20T05:25:02.859Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大胖熊子">
-<meta name="twitter:description" content="数据库数据库事务特性  1.原子性Atomicity一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。 2.一致性Consistency一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：  强一致性：读操作可以立即读到提交的更新操">
-<meta name="twitter:image" content="https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/数据库事务/wpsrOEr74.jpg">
+<meta name="twitter:title" content="数据库事务">
+<meta name="twitter:description" content="数据库数据库事务特性1.原子性Atomicity一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。 2.一致性Consistency一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：  强一致性：读操作可以立即读到提交的更新操作。">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/3/10/1620fc30782107d1?imageslim">
     
     
         
@@ -43,7 +39,7 @@
         
     
     <!-- title -->
-    <title>大胖熊子</title>
+    <title>数据库事务</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -79,8 +75,10 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/02/05/整理/JAVA/JVM/JAVA启动参数/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        <li><a class="icon" href="/2019/02/06/整理/JAVA/并发与多线程/并发与多线程/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="/2019/02/05/整理/数据结构和算法/细度大话数据结构/数据结构绪论/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -93,16 +91,16 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&text=数据库事务"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&is_video=false&description=数据库事务"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=数据库事务&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&name=数据库事务&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -119,7 +117,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        数据库事务
     </h1>
 
 
@@ -130,21 +128,25 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2019-05-01T12:42:22.014Z" itemprop="datePublished">2019-05-01</time>
+        <time datetime="2019-02-05T08:17:15.000Z" itemprop="datePublished">2019-02-05</time>
     </div>
 
 
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/计算机基础/">计算机基础</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    <h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a><strong>数据库</strong></h3><h3 id="数据库事务特性"><a href="#数据库事务特性" class="headerlink" title="数据库事务特性"></a>数据库事务特性</h3><p><img src="数据库事务/wpsrOEr74.jpg" alt="img"> </p>
-<h4 id="1-原子性Atomicity"><a href="#1-原子性Atomicity" class="headerlink" title="1.原子性Atomicity"></a>1.原子性Atomicity</h4><p>一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。</p>
+    <h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a><strong>数据库</strong></h3><h3 id="数据库事务特性"><a href="#数据库事务特性" class="headerlink" title="数据库事务特性"></a>数据库事务特性</h3><h4 id="1-原子性Atomicity"><a href="#1-原子性Atomicity" class="headerlink" title="1.原子性Atomicity"></a>1.原子性Atomicity</h4><p>一个事务包含多个操作，这些操作要么全部执行，要么全都不执行。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。</p>
 <h4 id="2-一致性Consistency"><a href="#2-一致性Consistency" class="headerlink" title="2.一致性Consistency"></a>2.一致性Consistency</h4><p>一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。事务的一致性决定了一个系统设计和实现的复杂度。事务可以不同程度的一致性：</p>
 <ul>
 <li><p><strong>强一致性</strong>：读操作可以立即读到提交的更新操作。</p>
@@ -163,17 +165,13 @@
 </ul>
 <h4 id="3-隔离性Isolation"><a href="#3-隔离性Isolation" class="headerlink" title="3.隔离性Isolation"></a>3.隔离性Isolation</h4><p>并发事务之间互相影响的程度，比如一个事务会不会读取到另一个未提交的事务修改的数据。</p>
 <h5 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h5><ul>
-<li><strong>脏读</strong>：指一个事务中访问到了另外一个事务未提交的数据。</li>
+<li><p><strong>脏读</strong>：指一个事务中访问到了另外一个事务未提交的数据。 </p>
+</li>
+<li><p><strong>不可重复读</strong>：是指在一个事务内根据同一个条件对行记录进行多次查询，但是搜出来的结果却不一致。发生不可重复读的原因是在多次搜索期间查询条件覆盖的数据被其他事务修改了。 </p>
+</li>
+<li><p><strong>幻读</strong>：指同一个事务内多次查询返回的结果集不一样（比如增加了或者减少了行记录）。比如同一个事务A内第一次查询时候有n条记录，但是第二次同等条件下查询却又n+1条记录，这就好像产生了幻觉，为啥两次结果不一样那。其实和不可重复读一样，发生幻读的原因也是另外一个事务新增或者删除或者修改了第一个事务结果集里面的数据。不同在于不可重复读是同一个记录的数据内容被修改了，幻读是数据行记录变多了或者少了。 </p>
+</li>
 </ul>
-<p><img src="数据库事务/wps5VufaP.jpg" alt="img"> </p>
-<ul>
-<li><strong>不可重复读</strong>：是指在一个事务内根据同一个条件对行记录进行多次查询，但是搜出来的结果却不一致。发生不可重复读的原因是在多次搜索期间查询条件覆盖的数据被其他事务修改了。</li>
-</ul>
-<p><img src="数据库事务/wpsvFTrXY.jpg" alt="img"> </p>
-<ul>
-<li><strong>幻读</strong>：指同一个事务内多次查询返回的结果集不一样（比如增加了或者减少了行记录）。比如同一个事务A内第一次查询时候有n条记录，但是第二次同等条件下查询却又n+1条记录，这就好像产生了幻觉，为啥两次结果不一样那。其实和不可重复读一样，发生幻读的原因也是另外一个事务新增或者删除或者修改了第一个事务结果集里面的数据。不同在于不可重复读是同一个记录的数据内容被修改了，幻读是数据行记录变多了或者少了。</li>
-</ul>
-<p><img src="数据库事务/wps9T2jg4.jpg" alt="img"> </p>
 <h5 id="事务的隔离级别从低到高有"><a href="#事务的隔离级别从低到高有" class="headerlink" title="事务的隔离级别从低到高有"></a>事务的隔离级别从低到高有</h5><ul>
 <li><p><strong>读未提交Read Uncommitted</strong>：最低的隔离级别，什么都不需要做，一个事务可以读到另一个事务未提交的结果。所有的并发事务问题都会发生。 </p>
 </li>
@@ -181,10 +179,9 @@
 </li>
 <li><p><strong>可重复读Repeated Read</strong>：在一个事务中，对于同一份数据的读取结果总是相同的，无论是否有其他事务对这份数据进行操作，以及这个事务是否提交。可以解决脏读、不可重复读。</p>
 </li>
-<li><p><strong>串行化Serialization</strong>：事务串行化执行，隔离级别最高，牺牲了系统的并发性。可以解决并发事务的所有问题。</p>
+<li><p><strong>串行化Serialization</strong>：事务串行化执行，隔离级别最高，牺牲了系统的并发性。可以解决并发事务的所有问题。 </p>
 </li>
 </ul>
-<p><img src="数据库事务/wpsIliG5Z.jpg" alt="img"> </p>
 <h4 id="4-持久性Durability"><a href="#4-持久性Durability" class="headerlink" title="4.持久性Durability"></a>4.持久性Durability</h4><p>事务提交后，对系统的影响是永久的。</p>
 <h3 id="事务分类"><a href="#事务分类" class="headerlink" title="事务分类"></a><strong>事务分类</strong></h3><h4 id="1-扁平化事务"><a href="#1-扁平化事务" class="headerlink" title="1.扁平化事务"></a>1.扁平化事务</h4><p>所有操作都在同一层次，主要限值是不能提交或者回滚事务的某一部分，要么都提交，要么都回滚。</p>
 <h4 id="2-带保存点的扁平事务"><a href="#2-带保存点的扁平事务" class="headerlink" title="2.带保存点的扁平事务"></a>2.带保存点的扁平事务</h4><p>为了解决第一种事务的弊端，允许事务在执行过程中回滚到较早的状态，而不是全部回滚。通过在事务中插入保存点，当操作失败后，可以选择回滚到最近的保存点处。可以回滚到任意保存点。</p>
@@ -258,16 +255,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/01/整理/数据结构和算法/数据库/数据库事务/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&text=数据库事务"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&is_video=false&description=数据库事务"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=数据库事务&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&title=数据库事务"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/数据结构和算法/数据库/数据库事务/&name=数据库事务&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

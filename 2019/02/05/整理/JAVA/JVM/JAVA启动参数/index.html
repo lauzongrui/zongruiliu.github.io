@@ -7,15 +7,16 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="JAVA启动参数共分为三类其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取消，需要慎重使用； 一、标准参数中比较有用的：verbose-verbose:class 输出jvm载">
+<meta name="keywords" content="计算机基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大胖熊子">
-<meta property="og:url" content="https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/index.html">
+<meta property="og:title" content="JVM启动参数">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/index.html">
 <meta property="og:site_name" content="大胖熊子">
 <meta property="og:description" content="JAVA启动参数共分为三类其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取消，需要慎重使用； 一、标准参数中比较有用的：verbose-verbose:class 输出jvm载">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-23T03:19:13.806Z">
+<meta property="og:updated_time" content="2019-05-20T05:25:54.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大胖熊子">
+<meta name="twitter:title" content="JVM启动参数">
 <meta name="twitter:description" content="JAVA启动参数共分为三类其一是标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容；其二是非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；其三是非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取消，需要慎重使用； 一、标准参数中比较有用的：verbose-verbose:class 输出jvm载">
     
     
@@ -36,7 +37,7 @@
         
     
     <!-- title -->
-    <title>大胖熊子</title>
+    <title>JVM启动参数</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -72,8 +73,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/02/05/整理/数据结构和算法/细度大话数据结构/数据结构绪论/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/05/整理/计算机基础/理解补码、原码、反码/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
+        
+        <li><a class="icon" href="/2019/02/05/整理/数据结构和算法/数据库/数据库事务/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -86,16 +89,16 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&text=JVM启动参数"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&is_video=false&description=JVM启动参数"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JVM启动参数&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&name=JVM启动参数&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -112,7 +115,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        JVM启动参数
     </h1>
 
 
@@ -123,13 +126,18 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2019-01-23T08:07:20.171Z" itemprop="datePublished">2019-01-23</time>
+        <time datetime="2019-02-05T08:17:15.000Z" itemprop="datePublished">2019-02-05</time>
     </div>
 
 
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/计算机基础/">计算机基础</a>
+    </div>
+
 
     </div>
   </header>
@@ -219,16 +227,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/01/23/整理/JAVA/JVM/JAVA启动参数/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&text=JVM启动参数"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&is_video=false&description=JVM启动参数"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JVM启动参数&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&title=JVM启动参数"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/JAVA/JVM/JAVA启动参数/&name=JVM启动参数&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
