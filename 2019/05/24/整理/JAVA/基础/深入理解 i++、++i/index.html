@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="1. 解决了什么问题i++ 和 ++i 都是进行的累加操作，基本操作都是加 1 , 如下： 1234567int i = 0;i++;Assert.that(i == 1, &quot;相等&quot;);int j = 0;++j;Assert.that(j == 1, &quot;相等&quot;); 2. 误区i++ 的误区,  累加在赋值后执行 123456789101112public static void testPlus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解i++、++i">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/index.html">
+<meta property="og:site_name" content="大胖熊子">
+<meta property="og:description" content="1. 解决了什么问题i++ 和 ++i 都是进行的累加操作，基本操作都是加 1 , 如下： 1234567int i = 0;i++;Assert.that(i == 1, &quot;相等&quot;);int j = 0;++j;Assert.that(j == 1, &quot;相等&quot;); 2. 误区i++ 的误区,  累加在赋值后执行 123456789101112public static void testPlus">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-23T16:20:24.897Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解i++、++i">
+<meta name="twitter:description" content="1. 解决了什么问题i++ 和 ++i 都是进行的累加操作，基本操作都是加 1 , 如下： 1234567int i = 0;i++;Assert.that(i == 1, &quot;相等&quot;);int j = 0;++j;Assert.that(j == 1, &quot;相等&quot;); 2. 误区i++ 的误区,  累加在赋值后执行 123456789101112public static void testPlus">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>深入理解i++、++i</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/05/24/整理/JAVA/基础/集合/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/05/24/整理/JAVA/基础/Java中进制转换/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&text=深入理解i++、++i"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&is_video=false&description=深入理解i++、++i"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=深入理解i++、++i&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&name=深入理解i++、++i&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-解决了什么问题"><span class="toc-number">1.</span> <span class="toc-text">1. 解决了什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-误区"><span class="toc-number">2.</span> <span class="toc-text">2. 误区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-基本原理"><span class="toc-number">3.</span> <span class="toc-text">3. 基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-多线程并发引发的混乱"><span class="toc-number">4.</span> <span class="toc-text">4. 多线程并发引发的混乱</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-volatile-与-synchronized-的区别"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 volatile 与 synchronized 的区别</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-参考"><span class="toc-number">5.</span> <span class="toc-text">5. 参考</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        深入理解i++、++i
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">大胖熊子</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-05-23T16:20:24.897Z" itemprop="datePublished">2019-05-24</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h4 id="1-解决了什么问题"><a href="#1-解决了什么问题" class="headerlink" title="1. 解决了什么问题"></a>1. 解决了什么问题</h4><p>i++ 和 ++i 都是进行的累加操作，基本操作都是加 1 , 如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">i++;</span><br><span class="line">Assert.that(i == <span class="number">1</span>, <span class="string">"相等"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">++j;</span><br><span class="line">Assert.that(j == <span class="number">1</span>, <span class="string">"相等"</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="2-误区"><a href="#2-误区" class="headerlink" title="2. 误区"></a>2. 误区</h4><p>i++ 的误区,  累加在赋值后执行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testPlus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> j = i++;</span><br><span class="line">      Assert.that(j == <span class="number">1</span>, <span class="string">"失败，此时 j 等于0"</span>);</span><br><span class="line">      Assert.that(j == <span class="number">0</span>, <span class="string">"成功"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testPlus1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> j = ++i;</span><br><span class="line">      Assert.that(j == <span class="number">1</span>, <span class="string">"成功"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>for 循环里面进行累加操作，第一个循环里面为什么 count 为 0 ？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">countPlusPlus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">          count = count++;</span><br><span class="line">      &#125;</span><br><span class="line">      Assert.that(count == <span class="number">0</span>, <span class="string">"成功"</span>);</span><br><span class="line">      Assert.that(count == <span class="number">100</span>, <span class="string">"失败，此时的值为0"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">countPlusPlus1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">          temp = count++;</span><br><span class="line">      &#125;</span><br><span class="line">      Assert.that(count == <span class="number">100</span>, <span class="string">"成功"</span>);</span><br><span class="line">      Assert.that(temp == <span class="number">99</span>, <span class="string">"成功"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-基本原理"><a href="#3-基本原理" class="headerlink" title="3. 基本原理"></a>3. 基本原理</h4><p>通过 javac 命令，编译源码 testPlus 与 testPlus1 生成 .class文件 字节码，再用 javap -c  (javap -v *.class &gt; output.txt) 执行 字节码，查看 <strong>jvm 执行指令</strong> 结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">Classfile /Users/jieming/Documents/studyspaces/java-frame/src/main/java/com/cjm/newcoder/TestPlus.class</span><br><span class="line">  Last modified <span class="number">2019</span>-<span class="number">3</span>-<span class="number">20</span>; size <span class="number">338</span> bytes</span><br><span class="line">  MD5 checksum e1c48ea904613600b30fe105967f7f04</span><br><span class="line">  Compiled from <span class="string">"TestPlus.java"</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">cjm</span>.<span class="title">newcoder</span>.<span class="title">TestPlus</span></span></span><br><span class="line">  minor version: 0</span><br><span class="line">  major version: <span class="number">52</span></span><br><span class="line">  flags: ACC_PUBLIC, ACC_SUPER</span><br><span class="line">Constant pool:</span><br><span class="line">   #1 = Methodref          #3.#12         // java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">   #2 = Class              #13            // com/cjm/newcoder/TestPlus</span><br><span class="line">   #3 = Class              #14            // java/lang/Object</span><br><span class="line">   #4 = Utf8               &lt;init&gt;</span><br><span class="line">   #5 = Utf8               ()V</span><br><span class="line">   #6 = Utf8               Code</span><br><span class="line">   #7 = Utf8               LineNumberTable</span><br><span class="line">   #8 = Utf8               testPlus</span><br><span class="line">   #9 = Utf8               testPlus1</span><br><span class="line">  #10 = Utf8               SourceFile</span><br><span class="line">  #11 = Utf8               TestPlus.java</span><br><span class="line">  #12 = NameAndType        #4:#5          // "&lt;init&gt;":()V</span><br><span class="line">  #13 = Utf8               com/cjm/newcoder/TestPlus</span><br><span class="line">  #14 = Utf8               java/lang/Object</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> com.cjm.newcoder.TestPlus();</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=<span class="number">1</span>, locals=<span class="number">1</span>, args_size=<span class="number">1</span></span><br><span class="line">         <span class="number">0</span>: aload_0</span><br><span class="line">         1: invokespecial #1                  // Method java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">         <span class="number">4</span>: <span class="keyword">return</span></span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line <span class="number">11</span>: <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行 i++</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPlus</span><span class="params">()</span></span>;</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=<span class="number">1</span>, locals=<span class="number">3</span>, args_size=<span class="number">1</span></span><br><span class="line">         <span class="number">0</span>: iconst_0     <span class="comment">// 生成整数0</span></span><br><span class="line">         <span class="number">1</span>: istore_1     <span class="comment">// 将整数0赋值给1号存储单元 (既变量i)</span></span><br><span class="line">         <span class="number">2</span>: iload_1      <span class="comment">// 将1号存储单元的值加载到数据栈（此时 i=0，栈顶值为0）</span></span><br><span class="line">         <span class="number">3</span>: iinc          <span class="number">1</span>, <span class="number">1</span>  <span class="comment">// 1号存储单元的值 +1 (此时 i=1)</span></span><br><span class="line">         <span class="number">6</span>: istore_2       <span class="comment">// 将数据栈顶的值(0) 取出来赋值给2号存储单元(即变量j，此时i=1，j=0)</span></span><br><span class="line">         <span class="number">7</span>: <span class="keyword">return</span>   <span class="comment">// 返回时： i=1,j=0</span></span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line <span class="number">14</span>: <span class="number">0</span></span><br><span class="line">        line <span class="number">15</span>: <span class="number">2</span></span><br><span class="line">        line <span class="number">16</span>: <span class="number">7</span></span><br><span class="line"><span class="comment">// 执行 ++i</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPlus1</span><span class="params">()</span></span>;</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=<span class="number">1</span>, locals=<span class="number">3</span>, args_size=<span class="number">1</span></span><br><span class="line">         <span class="number">0</span>: iconst_0    <span class="comment">//  生成整数0</span></span><br><span class="line">         <span class="number">1</span>: istore_1    <span class="comment">// 将整数0 赋值给 1号存储单元(既变量i)</span></span><br><span class="line">         <span class="number">2</span>: iinc          <span class="number">1</span>, <span class="number">1</span> <span class="comment">// 1号存储单元的值+1 (此时 i=1)</span></span><br><span class="line">         <span class="number">5</span>: iload_1				<span class="comment">// 将1号存储单元的值加载到数据栈(此时 i=1，栈顶值为1)</span></span><br><span class="line">         <span class="number">6</span>: istore_2      <span class="comment">// 将数据栈顶的值(1) 取出来赋值给2号存储单元(既变量j, 此时i=1，j=1)</span></span><br><span class="line">         <span class="number">7</span>: <span class="keyword">return</span>        <span class="comment">// 返回时：i=1, j=1</span></span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line <span class="number">19</span>: <span class="number">0</span></span><br><span class="line">        line <span class="number">20</span>: <span class="number">2</span></span><br><span class="line">        line <span class="number">21</span>: <span class="number">7</span></span><br><span class="line">&#125;</span><br><span class="line">SourceFile: <span class="string">"TestPlus.java"</span></span><br></pre></td></tr></table></figure>
+<p>在执行 i++ 的时候，先把 i 的数据暂存在数据栈，执行 累加后，再把数据栈的数据赋值给相应的变量。</p>
+<p>而执行 ++i 的时候，先执行累加，再把数据加载到数据栈，再把数据栈的值赋值相应变量。</p>
+<h4 id="4-多线程并发引发的混乱"><a href="#4-多线程并发引发的混乱" class="headerlink" title="4. 多线程并发引发的混乱"></a>4. 多线程并发引发的混乱</h4><p>多线程环境下 ++i 操作引起的数据混乱。引发混乱的原因是：++i 操作不是原子操作。</p>
+<p>从最底层的CPU层面上来说，++i 操作大致可以分解为以下 3个指令：</p>
+<ol>
+<li>取数</li>
+<li>累加</li>
+<li>存储</li>
+</ol>
+<p>其中的一条指令可以保证是原子操作，但是 3 条指令合在一起却不是，这就导致了<code>++i</code>语句不是原子操作。</p>
+<p>如果变量 <code>i</code> 用 <code>volatile</code> 修饰是否可以保证<code>++i</code>是原子操作呢，实际上这也是不行的。volatile 并不能保证原子性，它是增加了线程间的可见性。</p>
+<p>如果要保证累加操作的原子性，可以采取下面的方法</p>
+<ol>
+<li>将 ++i 置于同步块中，可以是 synchronized 或者J.U.C中的排他锁 (如 ReentrantLock 等)</li>
+<li>使用原子性（Atomic）类替换 <code>++i</code>，具体使用哪个类由变量类型决定。如果<code>i</code>是整形，则使用<code>AtomicInteger</code>类，其中的<code>AtomicInteger#addAndGet()</code>就对应着 <code>++i</code>语句，不过它是原子性操作。</li>
+</ol>
+<h5 id="4-1-volatile-与-synchronized-的区别"><a href="#4-1-volatile-与-synchronized-的区别" class="headerlink" title="4.1 volatile 与 synchronized 的区别"></a>4.1 volatile 与 synchronized 的区别</h5><p>volatile 本质是在告诉 jvm 当前变量在寄存器中的值是不确定的，需要从主存中读取，synchronized 则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。</p>
+<p>volatile 仅能使用在变量级别，synchronized 则可以使用在变量，方法。</p>
+<p>volatile 仅能实现变量的修改可见性，但不具备原子特性，而 synchronized 则可以保证变量的修改可见性和原子性。</p>
+<p>volatile 不会造成线程阻塞，而 synchronized 可能会造成线程的阻塞。</p>
+<h4 id="5-参考"><a href="#5-参考" class="headerlink" title="5. 参考"></a>5. 参考</h4><p><a href="https://blog.csdn.net/xialei199023/article/details/76383013" target="_blank" rel="noopener">深入理解Java中的i++、++i语句</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-解决了什么问题"><span class="toc-number">1.</span> <span class="toc-text">1. 解决了什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-误区"><span class="toc-number">2.</span> <span class="toc-text">2. 误区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-基本原理"><span class="toc-number">3.</span> <span class="toc-text">3. 基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-多线程并发引发的混乱"><span class="toc-number">4.</span> <span class="toc-text">4. 多线程并发引发的混乱</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-volatile-与-synchronized-的区别"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 volatile 与 synchronized 的区别</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-参考"><span class="toc-number">5.</span> <span class="toc-text">5. 参考</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&text=深入理解i++、++i"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&is_video=false&description=深入理解i++、++i"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=深入理解i++、++i&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&title=深入理解i++、++i"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/&name=深入理解i++、++i&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 liuzongrui
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

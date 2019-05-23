@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="一、基本认知1. 散列集有一种众所周知的数据结构，可以快速地查找所需要的对象，这就是 散列表(hash table)。散列表为每个对象计算一个整数，称为 散列码(hash code) 。散列码是由对象的实例域产生的一个整数。更加准确的说，具有不同数据域的对象将产生不同的散列码。 12345678910111213// String类的hashCode 值// s[0]*31^(n-1) + s[1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/index.html">
+<meta property="og:site_name" content="大胖熊子">
+<meta property="og:description" content="一、基本认知1. 散列集有一种众所周知的数据结构，可以快速地查找所需要的对象，这就是 散列表(hash table)。散列表为每个对象计算一个整数，称为 散列码(hash code) 。散列码是由对象的实例域产生的一个整数。更加准确的说，具有不同数据域的对象将产生不同的散列码。 12345678910111213// String类的hashCode 值// s[0]*31^(n-1) + s[1">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-23T16:20:24.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="集合">
+<meta name="twitter:description" content="一、基本认知1. 散列集有一种众所周知的数据结构，可以快速地查找所需要的对象，这就是 散列表(hash table)。散列表为每个对象计算一个整数，称为 散列码(hash code) 。散列码是由对象的实例域产生的一个整数。更加准确的说，具有不同数据域的对象将产生不同的散列码。 12345678910111213// String类的hashCode 值// s[0]*31^(n-1) + s[1">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>集合</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/05/24/整理/框架/Spring/IoC/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&text=集合"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&is_video=false&description=集合"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=集合&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&name=集合&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本认知"><span class="toc-number">1.</span> <span class="toc-text">一、基本认知</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-散列集"><span class="toc-number">1.1.</span> <span class="toc-text">1. 散列集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-队列（queue）"><span class="toc-number">1.2.</span> <span class="toc-text">2. 队列（queue）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-HashMap"><span class="toc-number">1.3.</span> <span class="toc-text">3. HashMap</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、接口源码"><span class="toc-number">2.</span> <span class="toc-text">二、接口源码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Collection-1-2"><span class="toc-number">2.0.1.</span> <span class="toc-text">java.util.Collection 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Iterator-1-2"><span class="toc-number">2.0.2.</span> <span class="toc-text">java.util.Iterator 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-List-1-2"><span class="toc-number">2.0.3.</span> <span class="toc-text">java.util.List 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-ListIterator-1-2"><span class="toc-number">2.0.4.</span> <span class="toc-text">java.util.ListIterator 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-LinkedList-1-2"><span class="toc-number">2.0.5.</span> <span class="toc-text">java.util.LinkedList 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-HashSet-1-2"><span class="toc-number">2.0.6.</span> <span class="toc-text">java.util.HashSet 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-lang-Object-1-0"><span class="toc-number">2.0.7.</span> <span class="toc-text">java.lang.Object 1.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-TreeSet-1-2"><span class="toc-number">2.0.8.</span> <span class="toc-text">java.util.TreeSet 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-lang-Comparable-1-2"><span class="toc-number">2.0.9.</span> <span class="toc-text">java.lang.Comparable 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Comparator-1-2"><span class="toc-number">2.0.10.</span> <span class="toc-text">java.util.Comparator 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-SortedSet-1-2"><span class="toc-number">2.0.11.</span> <span class="toc-text">java.util.SortedSet 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-NavigableSet-6"><span class="toc-number">2.0.12.</span> <span class="toc-text">java.util.NavigableSet  6</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-TreeSet"><span class="toc-number">2.0.13.</span> <span class="toc-text">java.util.TreeSet</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Queue-5-0"><span class="toc-number">2.0.14.</span> <span class="toc-text">java.util.Queue 5.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Deque-6-双端队列"><span class="toc-number">2.0.15.</span> <span class="toc-text">java.util.Deque  6  双端队列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-ArrayDeque-6"><span class="toc-number">2.0.16.</span> <span class="toc-text">java.util.ArrayDeque 6</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-PriorityQueue-5-0-优先级队列"><span class="toc-number">2.0.17.</span> <span class="toc-text">java.util.PriorityQueue 5.0    优先级队列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Map-lt-K-V-gt-1-2"><span class="toc-number">2.0.18.</span> <span class="toc-text">java.util.Map&lt;K, V&gt;  1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Map-Entry-lt-K，V-gt-1-2"><span class="toc-number">2.0.19.</span> <span class="toc-text">java.util.Map.Entry&lt;K，V&gt;   1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-HashMap-lt-K-V-gt-1-2"><span class="toc-number">2.0.20.</span> <span class="toc-text">java.util.HashMap&lt;K, V&gt;  1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-TreeMap-lt-K-V-gt-1-2"><span class="toc-number">2.0.21.</span> <span class="toc-text">java.util.TreeMap&lt;K, V&gt; 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-SortedMap-lt-K-V-gt-1-2"><span class="toc-number">2.0.22.</span> <span class="toc-text">java.util.SortedMap&lt;K, V&gt;  1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-WeakHashMap-lt-K-V-gt-1-2"><span class="toc-number">2.0.23.</span> <span class="toc-text">java.util.WeakHashMap&lt;K, V&gt;  1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-LinkedHashSet-1-4"><span class="toc-number">2.0.24.</span> <span class="toc-text">java.util.LinkedHashSet   1.4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-LinkedHashMap-lt-K-V-gt-1-4"><span class="toc-number">2.0.25.</span> <span class="toc-text">java.util.LinkedHashMap&lt;K, V&gt;  1.4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-EnumSet-lt-E-extends-Enum-gt-5-0"><span class="toc-number">2.0.26.</span> <span class="toc-text">java.util.EnumSet&lt;E extends Enum&gt;  5.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-EnumMap-lt-K-extends-Enum-V-gt-5-0"><span class="toc-number">2.0.27.</span> <span class="toc-text">java.util.EnumMap&lt;K extends Enum, V&gt;   5.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-IdentityHashMap-lt-K-V-gt-1-4-标识散列映射表"><span class="toc-number">2.0.28.</span> <span class="toc-text">java.util.IdentityHashMap&lt;K, V&gt;   1.4    标识散列映射表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-lang-IdentityHashMap-lt-K-V-gt-1-4"><span class="toc-number">2.0.29.</span> <span class="toc-text">java.lang.IdentityHashMap&lt;K, V&gt;  1.4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-RandomAccess"><span class="toc-number">2.0.30.</span> <span class="toc-text">java.util.RandomAccess</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#三、友情链接"><span class="toc-number">3.</span> <span class="toc-text">三、友情链接</span></a></li>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        集合
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">大胖熊子</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-05-23T16:20:24.897Z" itemprop="datePublished">2019-05-24</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="一、基本认知"><a href="#一、基本认知" class="headerlink" title="一、基本认知"></a>一、基本认知</h3><h4 id="1-散列集"><a href="#1-散列集" class="headerlink" title="1. 散列集"></a>1. 散列集</h4><p>有一种众所周知的数据结构，可以快速地查找所需要的对象，这就是 <strong>散列表(hash table)</strong>。散列表为每个对象计算一个整数，称为 <strong>散列码(hash code) </strong>。散列码是由对象的实例域产生的一个整数。更加准确的说，具有不同数据域的对象将产生不同的散列码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// String类的hashCode 值</span></span><br><span class="line"><span class="comment">// s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h = hash;</span><br><span class="line">    <span class="keyword">if</span> (h == <span class="number">0</span> &amp;&amp; value.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span> <span class="keyword">var</span>[] = value;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; value.length; i++) &#123;</span><br><span class="line">            h = <span class="number">31</span> * h + val[i];</span><br><span class="line">        &#125;</span><br><span class="line">        hash = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Java 中，<strong>散列表用链表数组</strong>实现。每个列表被称为桶（bucket）。要想查找表中对象的位置，就要先计算它的散列码，然后与桶的总数取余，所得到的结果就是保存这个元素的桶的索引。例如，如果某个对象的散列码为76268，并且有128个桶，对象应该保存在第108号桶中 (76268 除以 128 余 108)。如果桶中没有其他元素，此时就将元素直接插入到桶中就可以了。当然，有时候会遇到桶被占满的情况，这也是不可避免的。这种现象被称为 <strong>散列冲突（hash collision）</strong>。</p>
+<p><strong>桶数</strong> 是指用于收集具有相同 <em>散列值</em> 的桶的数目。通常，将桶数设置为预计元素个数的 75% ~ 150%。标准类库使用的桶数是 2 的幂，默认值为16（为表大小提供的任何值都将被自动地转换为2的下一个幂）。</p>
+<p><strong>再散列（rehashed）</strong>如果散列表太满，负载达到负载因子的水平，就需要再散列。如果要对散列表再散列，就需要创建一个桶数更多的表，并将所有元素插入新表中，然后丢弃原来的表。</p>
+<p><strong>尺寸</strong> 表中当前存储的位数</p>
+<p><strong>负载因子</strong> 尺寸/容量(桶数)，空表负载为0，满表负载为1.0，负载轻产生的冲突可能性小，有利于插入和查询，默认的负载因子为0.75；</p>
+<h4 id="2-队列（queue）"><a href="#2-队列（queue）" class="headerlink" title="2. 队列（queue）"></a>2. 队列（queue）</h4><p>队列接口指出可以在队列的尾部添加元素，在队列的头部删除元素，并且可以查找队列中元素的个数。当需要收集对象，并按照“先进先出”的规则检索对象时就应该使用队列。</p>
+<h4 id="3-HashMap"><a href="#3-HashMap" class="headerlink" title="3. HashMap"></a>3. HashMap</h4><p>存在的问题：死链问题及扩容数据丢失问题。</p>
+<h3 id="二、接口源码"><a href="#二、接口源码" class="headerlink" title="二、接口源码"></a>二、接口源码</h3><h5 id="java-util-Collection-1-2"><a href="#java-util-Collection-1-2" class="headerlink" title="java.util.Collection 1.2"></a>java.util.Collection<e> 1.2</e></h5><ul>
+<li><p>Iterator<e> iterator()</e></p>
+<p>返回一个用于访问集合中每个元素的迭代器。</p>
+</li>
+<li><p>int size()</p>
+<p>返回当前存储在集合中的元素个数。</p>
+</li>
+<li><p>boolean isEmpty()</p>
+<p>如果集合中没有元素，返回true.</p>
+</li>
+<li><p>boolean contains(Object obj)</p>
+<p>如果这个集合包含other 集合中的所有元素，返回true。</p>
+</li>
+<li><p>boolean add(Object element)</p>
+<p>将一个元素添加到集合中。如果由于这个调用改变了集合，返回true。</p>
+</li>
+<li><p>boolean addAll(Collection&lt;? extends E&gt; other)</p>
+<p>将other 集合中的所有元素添加到这个集合中。如果由于这个调用改变了集合，返回true。</p>
+</li>
+<li><p>boolean remove(Object obj)</p>
+<p>从这个集合中删除等于obj 的对象。如果有匹配的对象被删除，返回true。</p>
+</li>
+<li><p>boolean removeAll(Collection&lt;?&gt; other)</p>
+<p>从这个集合中删除other 集合中存在的所有元素。如果由于这个调用改变了集合，返回true。</p>
+</li>
+<li><p>void clear()</p>
+<p>从这个集合中删除所有的元素</p>
+</li>
+<li><p>boolean retainAll(Collection&lt;?&gt; other)</p>
+<p>从这个集合中删除所有与other 集合中的元素不同的元素。如果由于这个调用改变了集合，返回true。</p>
+</li>
+<li><p>Object[] toArray()</p>
+<p>返回这个集合的对象数组</p>
+</li>
+<li><p><t> T[] toArray(T[] arrayToFill)</t></p>
+<p>返回这个集合的对象数组。如果arrayToFill 足够大，就将集合中的元素填入这个数组中。剩余空间填补null；否则，分配一个新数组，其成员类型与 arrayToFill 的成员类型相同，其长度等于集合的大小，并添入集合元素。</p>
+</li>
+</ul>
+<h5 id="java-util-Iterator-1-2"><a href="#java-util-Iterator-1-2" class="headerlink" title="java.util.Iterator 1.2"></a>java.util.Iterator<e> 1.2</e></h5><ul>
+<li><p>boolean hasNext()</p>
+<p>如果存在可访问的元素，返回true。</p>
+</li>
+<li><p>E next()</p>
+<p>返回将要访问的下一个对象。如果已经到达了集合的尾部，将抛出一个NoSuchElementException。</p>
+</li>
+<li><p>void remove()</p>
+<p>删除上次访问的对象。这个方法必须紧跟在访问一个元素之后执行。如果上次访问之后，集合已经发生了变化，这个方法将抛出一个IllegalStateException。</p>
+</li>
+</ul>
+<h5 id="java-util-List-1-2"><a href="#java-util-List-1-2" class="headerlink" title="java.util.List 1.2"></a>java.util.List<e> 1.2</e></h5><ul>
+<li><p>ListIterator<e> listIterator()</e></p>
+<p>返回一个列表迭代器，以便用来访问列表中的元素。</p>
+</li>
+<li><p>ListIterator<e> listIterator(int index)</e></p>
+<p>返回一个列表迭代器，以便用来访问列表中的元素，这个元素是第一次调用next 返回的给定索引的元素。</p>
+</li>
+<li><p>void add(int i, E element)</p>
+<p>在给定位置添加一个元素。</p>
+</li>
+<li><p>void addAll(int i, Collection&lt;? extends E&gt; elements)</p>
+<p>将某个集合中的所有元素添加到给定位置。</p>
+</li>
+<li><p>E remove(int i)</p>
+<p>删除给定位置的元素并返回这个元素。</p>
+</li>
+<li><p>E get(int i)</p>
+<p>获取给定位置的元素。</p>
+</li>
+<li><p>E set(int i, E element)</p>
+<p>用新元素取代给定位置的元素，并返回原来的这个元素。</p>
+</li>
+<li><p>int indexof(Object element)</p>
+<p>返回与指定元素相等的元素在列表中第一次出现的位置，如果没有这样的元素将返回-1。</p>
+</li>
+<li><p>int lastIndexOf(Object element)</p>
+<p>返回与指定元素相等的元素在列表中最后一次出现的位置，如果没有这样的元素将返回-1。</p>
+</li>
+</ul>
+<h5 id="java-util-ListIterator-1-2"><a href="#java-util-ListIterator-1-2" class="headerlink" title="java.util.ListIterator 1.2"></a>java.util.ListIterator<e> 1.2</e></h5><ul>
+<li><p>void add(E newElement)</p>
+<p>在当前位置添加一个元素。</p>
+</li>
+<li><p>void set(E newElement) </p>
+<p>用新元素取代next 或 previous 上次访问的元素。如果在next 或 previous 上次调用之后列表结构被修改了，将抛出一个 IllegalStateException 异常。</p>
+</li>
+<li><p>boolean hasPrevious()</p>
+<p>当反向迭代列表时，还有可供访问的元素，返回true。</p>
+</li>
+<li><p>E previous()</p>
+<p>返回前一个对象。如果已经到达了列表的头部，就抛出一个NoSuchElementException 异常</p>
+</li>
+<li><p>int nexIndex()</p>
+<p>返回下一次调用next 方法时将返回的元素索引。</p>
+</li>
+<li><p>int previousIndex()</p>
+<p>返回下一次调用previous 方法时将返回的元素索引。</p>
+</li>
+</ul>
+<h5 id="java-util-LinkedList-1-2"><a href="#java-util-LinkedList-1-2" class="headerlink" title="java.util.LinkedList 1.2"></a>java.util.LinkedList<e> 1.2</e></h5><ul>
+<li><p>LinkedList()</p>
+<p>构造一个空链表。</p>
+</li>
+<li><p>LinkedList(Collection&lt;? extends E&gt; elements)</p>
+<p>构造一个链表，并将集合中的所有的元素添加到这个链表中。</p>
+</li>
+<li><p>void addFirst(E element)</p>
+</li>
+<li><p>void addLast(E element)</p>
+<p>将某个元素添加到列表的头部或尾部</p>
+</li>
+<li><p>E getFirst()</p>
+</li>
+<li><p>E getLast()</p>
+<p>返回列表头部或尾部的元素</p>
+</li>
+<li><p>E removeFirst()</p>
+</li>
+<li><p>E removeLast()</p>
+<p>删除并返回列表头部或尾部的元素。</p>
+</li>
+</ul>
+<h5 id="java-util-HashSet-1-2"><a href="#java-util-HashSet-1-2" class="headerlink" title="java.util.HashSet 1.2"></a>java.util.HashSet<e> 1.2</e></h5><ul>
+<li><p>HashSet()</p>
+<p>构造一个空散列表。</p>
+</li>
+<li><p>HashSet(Collection&lt;? extend E&gt;  elements)</p>
+<p>构造一个散列集，并将集合中的所有元素添加到这个散列集中。</p>
+</li>
+<li><p>HashSet(int initialCapacity)</p>
+<p>构造一个空的具有指定容量(桶数) 的散列集</p>
+</li>
+<li><p>HashSet(int initialCapacity, float loadFactor)</p>
+<p>构造一个具有指定容量和装填因子（一个 0.0 ~ 1.0 之间的数值，确定散列表填充的百分比，当大于这个百分比时，散列表进行再散列）的空散列集。</p>
+</li>
+</ul>
+<h5 id="java-lang-Object-1-0"><a href="#java-lang-Object-1-0" class="headerlink" title="java.lang.Object 1.0"></a>java.lang.Object 1.0</h5><ul>
+<li><p>int hashCode()</p>
+<p>返回这个对象的散列码。散列码可以是任何整数，包括正数或负数。equals 和 hashCode 的定义必须兼容，既如果 x.equals(y)，x.hashCode 必须等于y.hashCode()。</p>
+</li>
+</ul>
+<h5 id="java-util-TreeSet-1-2"><a href="#java-util-TreeSet-1-2" class="headerlink" title="java.util.TreeSet 1.2"></a>java.util.TreeSet<e> 1.2</e></h5><ul>
+<li><p>TreeSet()</p>
+<p>构造一个空树集。</p>
+</li>
+<li><p>TreeSet(Collection&lt;? extends E&gt; elements)</p>
+<p>构造一个树集，并将集合中的所有元素添加到树集中。</p>
+</li>
+</ul>
+<h5 id="java-lang-Comparable-1-2"><a href="#java-lang-Comparable-1-2" class="headerlink" title="java.lang.Comparable 1.2"></a>java.lang.Comparable<t> 1.2</t></h5><ul>
+<li><p>int compareTo(T  other)</p>
+<p>将这个对象（this）与另一个对象（other）进行比较，如果this 位于 other 之前则返回负值；如果两个对象在排列顺序中处于相同的位置则返回0；如果this 位于 other 之后则返回正值。</p>
+</li>
+</ul>
+<h5 id="java-util-Comparator-1-2"><a href="#java-util-Comparator-1-2" class="headerlink" title="java.util.Comparator 1.2"></a>java.util.Comparator<t> 1.2</t></h5><ul>
+<li><p>int compare(T a, T b)</p>
+<p>将两个对象进行比较，如果 a 位于 b 之前则返回负值；如果两个对象在排列顺序中处于相同的位置则返回0 ；如果 a 位于 b 之后 则返回正值。</p>
+</li>
+</ul>
+<h5 id="java-util-SortedSet-1-2"><a href="#java-util-SortedSet-1-2" class="headerlink" title="java.util.SortedSet 1.2"></a>java.util.SortedSet<e> 1.2</e></h5><ul>
+<li><p>Comparator&lt;? super E&gt; comparator()</p>
+<p>返回用于对元素进行排序的比较器。如果元素用 Comparable 接口的 compareTo 方法进行比较则返回 null。</p>
+</li>
+<li><p>E first()</p>
+</li>
+<li><p>E last()</p>
+<p>返回有序集中的最小元素或最大元素。</p>
+</li>
+</ul>
+<h5 id="java-util-NavigableSet-6"><a href="#java-util-NavigableSet-6" class="headerlink" title="java.util.NavigableSet  6"></a>java.util.NavigableSet<e>  6</e></h5><ul>
+<li><p>E higher(E value)</p>
+</li>
+<li><p>E lower(E value)</p>
+<p>返回大于value 的最小元素或小于value 的最大元素，如果没有这样的元素则返回null。</p>
+</li>
+<li><p>E ceiling(E value)</p>
+</li>
+<li><p>E floor(E value)</p>
+<p>返回大于等于 value 的最小元素或小于等于 value 的最大元素，如果没有这样的元素则返回 null。</p>
+</li>
+<li><p>E pollFirst()</p>
+</li>
+<li><p>E pollLast()</p>
+<p>删除并返回这个集合中的最大元素或最小元素，这个集为空时返回 null。</p>
+</li>
+<li><p>Iterator<e> descendingIterator()</e></p>
+<p>返回一个按照递减顺序遍历集中元素的迭代器。</p>
+</li>
+</ul>
+<h5 id="java-util-TreeSet"><a href="#java-util-TreeSet" class="headerlink" title="java.util.TreeSet"></a>java.util.TreeSet<e></e></h5><ul>
+<li><p>TreeSet()</p>
+<p>构造一个用于排序 Comparable 对象的树集。</p>
+</li>
+<li><p>TreeSet(Comparator&lt;? super E&gt; c)</p>
+<p>构造一个树集，并使用指定的比较器对其中的元素进行排序。</p>
+</li>
+<li><p>TreeSet(SortedSet&lt;? extends E&gt; elements)</p>
+<p>构造一个树集，将有序集中的所有元素添加到这个树集中，并使用与给定集相同的元素比较器。</p>
+</li>
+</ul>
+<h5 id="java-util-Queue-5-0"><a href="#java-util-Queue-5-0" class="headerlink" title="java.util.Queue 5.0"></a>java.util.Queue<e> 5.0</e></h5><ul>
+<li><p>boolean add(E element)</p>
+</li>
+<li><p>boolean offer(E element)</p>
+<p>如果队列没有满，将给定的元素添加到这个双端队列的尾部并返回 true。如果队列满了，第一个方法将抛出一个 IllegalStateException，而第二个方法返回 false。</p>
+</li>
+<li><p>E remove()</p>
+</li>
+<li><p>E poll()</p>
+<p>假如队列不空，删除并返回这个队列头部的元素。如果队列是空的，第一个方法抛出NoSuchElementException，而第二个方法返回 null。</p>
+</li>
+<li><p>E element()</p>
+</li>
+<li><p>E peek()</p>
+<p>如果队列不空，返回这个队列头部的元素，但不删除。如果队列空，第一个方法将抛出一个NoSuchElementException, 而第二个方法返回 null。</p>
+</li>
+</ul>
+<h5 id="java-util-Deque-6-双端队列"><a href="#java-util-Deque-6-双端队列" class="headerlink" title="java.util.Deque  6  双端队列"></a>java.util.Deque<e>  6  双端队列</e></h5><ul>
+<li><p>void addFirst(E element)</p>
+</li>
+<li><p>void addLast(E element)</p>
+</li>
+<li><p>boolean offerFirst(E element)</p>
+</li>
+<li><p>boolean offerLast(E element)</p>
+<p>将给定的对象添加到双端队列的头部或尾部。如果队列满了，前面两个方法将抛出一个IllegalStateException，而后面两个方法返回 false。</p>
+</li>
+<li><p>E removeFirst()</p>
+</li>
+<li><p>E removeLast()</p>
+</li>
+<li><p>E pollFirst()</p>
+</li>
+<li><p>E pollLast()</p>
+<p>如果队列不空，删除并返回队列头部的元素。如果队列为空，前面两个方法将抛出一个NoSuchElementException，而后面两个方法返回 null。</p>
+</li>
+<li><p>E getFirst()</p>
+</li>
+<li><p>E getLast()</p>
+</li>
+<li><p>E peekFirst()</p>
+</li>
+<li><p>E peekLast()</p>
+<p>如果队列非空，返回队列头部的元素，但不删除。如果队列空，前面两个方法将抛出一个 NoSuchElementException，而后面两个方法返回 null。</p>
+</li>
+</ul>
+<h5 id="java-util-ArrayDeque-6"><a href="#java-util-ArrayDeque-6" class="headerlink" title="java.util.ArrayDeque 6"></a>java.util.ArrayDeque<e> 6</e></h5><ul>
+<li><p>ArrayDeque()</p>
+</li>
+<li><p>ArrayDeque(int  initialCapacity)</p>
+<p>用初始容量16 或给定的初始容量构造一个无限双端队列。</p>
+</li>
+</ul>
+<h5 id="java-util-PriorityQueue-5-0-优先级队列"><a href="#java-util-PriorityQueue-5-0-优先级队列" class="headerlink" title="java.util.PriorityQueue 5.0    优先级队列"></a>java.util.PriorityQueue 5.0    优先级队列</h5><ul>
+<li><p>PriorityQueue()</p>
+</li>
+<li><p>PriorityQueue(int  initialCapactiy)</p>
+<p>构造一个用于存放Comparable 对象的优先级队列。</p>
+</li>
+<li><p>PriorityQueue(int  initialCapactiy, Comparator&lt;? super E&gt; c)</p>
+<p>构造一个优先级队列，并用指定的比较器对元素进行排序。</p>
+</li>
+</ul>
+<h5 id="java-util-Map-lt-K-V-gt-1-2"><a href="#java-util-Map-lt-K-V-gt-1-2" class="headerlink" title="java.util.Map&lt;K, V&gt;  1.2"></a>java.util.Map&lt;K, V&gt;  1.2</h5><ul>
+<li><p>V get(object key)</p>
+<p>获取与键对应的值；返回与键对应的对象，如果在映射表中没有这个对象则返回 null。键可以为 null。</p>
+</li>
+<li><p>V put(K key, V value)</p>
+<p>将键与对应的值关系插入到映射表中。如果这个键已经存在，新的对象将取代与这个键对应的旧对象。这个方法将返回键对应的旧值。如果这个键以前没有出现过则返回null。键可以为null，但值不能为null。</p>
+</li>
+<li><p>void putAll(Map&lt;? extend K，? extends V&gt;  entries)</p>
+<p>将给定映射表中的所有条目添加到这个映射表中。</p>
+</li>
+<li><p>boolean  containsKey(Object key)</p>
+<p>如果在映射表中已经有这个值，返回true。</p>
+</li>
+<li><p>boolean containsValue(Object value)</p>
+<p>如果映射表中已经有这个值，返回true</p>
+</li>
+<li><p>Set&lt;Map.Entry&lt;K, V&gt;&gt;   entrySet()</p>
+<p>返回Map.Entry 对象的集视图，即映射表中的 键/ 值 对。可以从这个集中删除元素，同时也从映射表中删除了它们。但是，不能添加任何元素。</p>
+</li>
+<li><p>Set<k>  keySet()</k></p>
+<p>返回映射表中所有键的集视图。可以从这个集中删除元素，同时也从映射表中删除了它们。但是，不能添加任何元素。</p>
+</li>
+<li><p>Collection<v>  values()</v></p>
+<p>返回映射表中所有值的集合视图。可以从这个集中删除元素，同时也从映射表中删除了它们。但是，不能添加任何元素。</p>
+</li>
+<li><p>Collection<v>  values()</v></p>
+<p>返回映射表中所有值的集合视图。可以从这个集中删除元素，同时也从映射表中删除了它们。但是，不能添加任何元素。</p>
+</li>
+</ul>
+<h5 id="java-util-Map-Entry-lt-K，V-gt-1-2"><a href="#java-util-Map-Entry-lt-K，V-gt-1-2" class="headerlink" title="java.util.Map.Entry&lt;K，V&gt;   1.2"></a>java.util.Map.Entry&lt;K，V&gt;   1.2</h5><ul>
+<li><p>K  getKey()</p>
+</li>
+<li><p>V getValue()</p>
+<p>返回这个条目的键或值。</p>
+</li>
+<li><p>V  setValue(V  newValue)</p>
+<p>设置在映射表中与新值对应的值，并返回旧值。</p>
+</li>
+</ul>
+<h5 id="java-util-HashMap-lt-K-V-gt-1-2"><a href="#java-util-HashMap-lt-K-V-gt-1-2" class="headerlink" title="java.util.HashMap&lt;K, V&gt;  1.2"></a>java.util.HashMap&lt;K, V&gt;  1.2</h5><ul>
+<li><p>HashMap()</p>
+</li>
+<li><p>HashMap(int  initialCapacity)</p>
+</li>
+<li><p>HashMap(int  initialCapacity,  float  loadFactor)</p>
+<p>用给定的容量和装填因子构造一个空散列映射表（装填因子是一个 0.0 ~ 1.0 之间的数值。 这个数值决定散列表填充的百分比。一旦到了这个比例，就要将其再散列到更大的表中）。默认的装填因子是 0.75。</p>
+</li>
+</ul>
+<h5 id="java-util-TreeMap-lt-K-V-gt-1-2"><a href="#java-util-TreeMap-lt-K-V-gt-1-2" class="headerlink" title="java.util.TreeMap&lt;K, V&gt; 1.2"></a>java.util.TreeMap&lt;K, V&gt; 1.2</h5><ul>
+<li><p>TreeMap(Comparator&lt;? super K&gt; c)</p>
+<p>构造一个树映射表，并使用一个指定的比较器对键进行排序。</p>
+</li>
+<li><p>TreeMap(Map&lt;? extends K, ? extends V&gt;  entries)</p>
+<p>构造一个树映射表，并将某个映射表中的所有条目添加到树映射表中。</p>
+</li>
+<li><p>TreeMap(SortedMap&lt;? extends K,  ? extend V&gt;   entries)</p>
+<p>构造一个树映射表，将某个有序映射表中的所有条目添加到树映射表中，并使用与给定的有序映射表相同的比较器。</p>
+</li>
+</ul>
+<h5 id="java-util-SortedMap-lt-K-V-gt-1-2"><a href="#java-util-SortedMap-lt-K-V-gt-1-2" class="headerlink" title="java.util.SortedMap&lt;K, V&gt;  1.2"></a>java.util.SortedMap&lt;K, V&gt;  1.2</h5><ul>
+<li><p>Comparator&lt;? super K&gt;   comparator()</p>
+<p>返回对键进行排序的比较器。如果键是用Comparable接口的 compareTo 方法进行比较的，返回null。</p>
+</li>
+<li><p>K firstKey()</p>
+</li>
+<li><p>K lastKey()</p>
+<p>返回映射表中最小元素和最大元素。</p>
+</li>
+</ul>
+<h5 id="java-util-WeakHashMap-lt-K-V-gt-1-2"><a href="#java-util-WeakHashMap-lt-K-V-gt-1-2" class="headerlink" title="java.util.WeakHashMap&lt;K, V&gt;  1.2"></a>java.util.WeakHashMap&lt;K, V&gt;  1.2</h5><ul>
+<li><p>WeakHashMap()</p>
+</li>
+<li><p>WeakHashMap(int  initialCapacity)</p>
+</li>
+<li><p>WeakHashMap(int  initialCapacity, float loadFactor)</p>
+<p>用给定的容量和填充因子构造一个空的散列映射表</p>
+</li>
+</ul>
+<h5 id="java-util-LinkedHashSet-1-4"><a href="#java-util-LinkedHashSet-1-4" class="headerlink" title="java.util.LinkedHashSet   1.4"></a>java.util.LinkedHashSet<e>   1.4</e></h5><ul>
+<li><p>LinkedHashSet()</p>
+</li>
+<li><p>LinkedHashSet(int  initialCapacity)</p>
+</li>
+<li><p>LinkedHashSet(int initicalCapacity, float  loadFactor)</p>
+<p>用给定的容量和填充因子构造一个空链接散列表</p>
+</li>
+</ul>
+<h5 id="java-util-LinkedHashMap-lt-K-V-gt-1-4"><a href="#java-util-LinkedHashMap-lt-K-V-gt-1-4" class="headerlink" title="java.util.LinkedHashMap&lt;K, V&gt;  1.4"></a>java.util.LinkedHashMap&lt;K, V&gt;  1.4</h5><ul>
+<li><p>LinkedHashMap()</p>
+</li>
+<li><p>LinkedHashMap(int   initialCapacity)</p>
+</li>
+<li><p>LinkedHashMap(int   initialCapacity, float  loadFactor)</p>
+</li>
+<li><p>LinkedHashMap(int   initialCapacity, float  loadFactor,  boolean  accessOrder)</p>
+<p>用给定的容量、填充因子和顺序构造一个空的链接散列映射表。</p>
+</li>
+<li><p>protected  boolean  removeEldestEntry(Map.Entry&lt;K, V&gt;  eldest)</p>
+<p>如果想删除 eldest 元素，并同时返回true， 就应该覆盖这个方法。eldest 参数是预期要删除的条目。这个方法将在条目添加到映射表中之后调用。其默认的实现将返回 false。即在默认情况下，旧元素没有被删除。然而，可以重新定义这个方法，以便有选择地返回 true。假如，如果最旧的条目符合一个条件，或者映射表超过了一定大小，则返回 true。</p>
+</li>
+</ul>
+<h5 id="java-util-EnumSet-lt-E-extends-Enum-gt-5-0"><a href="#java-util-EnumSet-lt-E-extends-Enum-gt-5-0" class="headerlink" title="java.util.EnumSet&lt;E extends Enum&gt;  5.0"></a>java.util.EnumSet&lt;E extends Enum<e>&gt;  5.0</e></h5><ul>
+<li><p>static &lt;E extends Enums<e>&gt;  EnumSet<e>  allOf(Class<e> enumType)</e></e></e></p>
+<p>返回一个包含给定枚举类型的所有值的集。</p>
+</li>
+<li><p>static &lt;E extends  Enum<e>&gt; EnumSet<e> noneOf(Class<e>  enumType)</e></e></e></p>
+<p>返回一个空集，并有足够的空间保存给定的枚举类型的所有的值。</p>
+</li>
+<li><p>static &lt;E extends Enum<e>&gt; EnumSet<e> range(E from, E to)</e></e></p>
+<p>返回一个包含from ~ to 之间的所有值（包含两个边界元素） 的集</p>
+</li>
+<li><p>static &lt;E extends Enum<e>&gt; EnumSet<e> of(E value)</e></e></p>
+</li>
+<li><p>static &lt;E extends Enum<e>&gt; EnumSet<e> of(E value, E …  values)</e></e></p>
+<p>返回包括给定值的集。</p>
+</li>
+</ul>
+<h5 id="java-util-EnumMap-lt-K-extends-Enum-V-gt-5-0"><a href="#java-util-EnumMap-lt-K-extends-Enum-V-gt-5-0" class="headerlink" title="java.util.EnumMap&lt;K extends Enum, V&gt;   5.0"></a>java.util.EnumMap&lt;K extends Enum<k>, V&gt;   5.0</k></h5><ul>
+<li><p>EnumMap(Class<k>  keyType)</k></p>
+<p>构造一个键为给定类型的空映射集。</p>
+</li>
+</ul>
+<h5 id="java-util-IdentityHashMap-lt-K-V-gt-1-4-标识散列映射表"><a href="#java-util-IdentityHashMap-lt-K-V-gt-1-4-标识散列映射表" class="headerlink" title="java.util.IdentityHashMap&lt;K, V&gt;   1.4    标识散列映射表"></a>java.util.IdentityHashMap&lt;K, V&gt;   1.4    标识散列映射表</h5><ul>
+<li><p>IdentityHashMap()</p>
+</li>
+<li><p>IdentityHashMap(int  expectedMaxSize)</p>
+<p>构造一个空的标识散列映射集，其容量是大于 1.5 * expectedMaxSize 的2的 最小次幂(expectedMaxSize 的默认值是21)。</p>
+</li>
+</ul>
+<h5 id="java-lang-IdentityHashMap-lt-K-V-gt-1-4"><a href="#java-lang-IdentityHashMap-lt-K-V-gt-1-4" class="headerlink" title="java.lang.IdentityHashMap&lt;K, V&gt;  1.4"></a>java.lang.IdentityHashMap&lt;K, V&gt;  1.4</h5><ul>
+<li><p>static int identityHashCode(Object obj)   1.1</p>
+<p>返回Object.hashCode 计算出来的相同的散列码（根据对象的内存地址产生），即使obj 所属的类已经重新定义了 hashCode 方法也是如此。</p>
+</li>
+</ul>
+<h5 id="java-util-RandomAccess"><a href="#java-util-RandomAccess" class="headerlink" title="java.util.RandomAccess"></a>java.util.RandomAccess</h5><ul>
+<li>没有任何方法，用来检测一个特定的集合是否支持高效的随机访问。ArrayList 类 和 Vector 类都实现了 RandomAccess 接口。 if (c instanceof RandomAccess) {} else {}。 </li>
+</ul>
+<h3 id="三、友情链接"><a href="#三、友情链接" class="headerlink" title="三、友情链接"></a>三、友情链接</h3><p><a href="https://segmentfault.com/a/1190000010799123" target="_blank" rel="noopener">科普：为什么 String hashCode 方法选择数字31作为乘子</a></p>
+<p><a href="https://www.cnblogs.com/xiaoxi/p/7233201.html" target="_blank" rel="noopener">jdk1.8 HashMap源码分析</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本认知"><span class="toc-number">1.</span> <span class="toc-text">一、基本认知</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-散列集"><span class="toc-number">1.1.</span> <span class="toc-text">1. 散列集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-队列（queue）"><span class="toc-number">1.2.</span> <span class="toc-text">2. 队列（queue）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-HashMap"><span class="toc-number">1.3.</span> <span class="toc-text">3. HashMap</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、接口源码"><span class="toc-number">2.</span> <span class="toc-text">二、接口源码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Collection-1-2"><span class="toc-number">2.0.1.</span> <span class="toc-text">java.util.Collection 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Iterator-1-2"><span class="toc-number">2.0.2.</span> <span class="toc-text">java.util.Iterator 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-List-1-2"><span class="toc-number">2.0.3.</span> <span class="toc-text">java.util.List 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-ListIterator-1-2"><span class="toc-number">2.0.4.</span> <span class="toc-text">java.util.ListIterator 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-LinkedList-1-2"><span class="toc-number">2.0.5.</span> <span class="toc-text">java.util.LinkedList 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-HashSet-1-2"><span class="toc-number">2.0.6.</span> <span class="toc-text">java.util.HashSet 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-lang-Object-1-0"><span class="toc-number">2.0.7.</span> <span class="toc-text">java.lang.Object 1.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-TreeSet-1-2"><span class="toc-number">2.0.8.</span> <span class="toc-text">java.util.TreeSet 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-lang-Comparable-1-2"><span class="toc-number">2.0.9.</span> <span class="toc-text">java.lang.Comparable 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Comparator-1-2"><span class="toc-number">2.0.10.</span> <span class="toc-text">java.util.Comparator 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-SortedSet-1-2"><span class="toc-number">2.0.11.</span> <span class="toc-text">java.util.SortedSet 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-NavigableSet-6"><span class="toc-number">2.0.12.</span> <span class="toc-text">java.util.NavigableSet  6</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-TreeSet"><span class="toc-number">2.0.13.</span> <span class="toc-text">java.util.TreeSet</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Queue-5-0"><span class="toc-number">2.0.14.</span> <span class="toc-text">java.util.Queue 5.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Deque-6-双端队列"><span class="toc-number">2.0.15.</span> <span class="toc-text">java.util.Deque  6  双端队列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-ArrayDeque-6"><span class="toc-number">2.0.16.</span> <span class="toc-text">java.util.ArrayDeque 6</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-PriorityQueue-5-0-优先级队列"><span class="toc-number">2.0.17.</span> <span class="toc-text">java.util.PriorityQueue 5.0    优先级队列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Map-lt-K-V-gt-1-2"><span class="toc-number">2.0.18.</span> <span class="toc-text">java.util.Map&lt;K, V&gt;  1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-Map-Entry-lt-K，V-gt-1-2"><span class="toc-number">2.0.19.</span> <span class="toc-text">java.util.Map.Entry&lt;K，V&gt;   1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-HashMap-lt-K-V-gt-1-2"><span class="toc-number">2.0.20.</span> <span class="toc-text">java.util.HashMap&lt;K, V&gt;  1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-TreeMap-lt-K-V-gt-1-2"><span class="toc-number">2.0.21.</span> <span class="toc-text">java.util.TreeMap&lt;K, V&gt; 1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-SortedMap-lt-K-V-gt-1-2"><span class="toc-number">2.0.22.</span> <span class="toc-text">java.util.SortedMap&lt;K, V&gt;  1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-WeakHashMap-lt-K-V-gt-1-2"><span class="toc-number">2.0.23.</span> <span class="toc-text">java.util.WeakHashMap&lt;K, V&gt;  1.2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-LinkedHashSet-1-4"><span class="toc-number">2.0.24.</span> <span class="toc-text">java.util.LinkedHashSet   1.4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-LinkedHashMap-lt-K-V-gt-1-4"><span class="toc-number">2.0.25.</span> <span class="toc-text">java.util.LinkedHashMap&lt;K, V&gt;  1.4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-EnumSet-lt-E-extends-Enum-gt-5-0"><span class="toc-number">2.0.26.</span> <span class="toc-text">java.util.EnumSet&lt;E extends Enum&gt;  5.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-EnumMap-lt-K-extends-Enum-V-gt-5-0"><span class="toc-number">2.0.27.</span> <span class="toc-text">java.util.EnumMap&lt;K extends Enum, V&gt;   5.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-IdentityHashMap-lt-K-V-gt-1-4-标识散列映射表"><span class="toc-number">2.0.28.</span> <span class="toc-text">java.util.IdentityHashMap&lt;K, V&gt;   1.4    标识散列映射表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-lang-IdentityHashMap-lt-K-V-gt-1-4"><span class="toc-number">2.0.29.</span> <span class="toc-text">java.lang.IdentityHashMap&lt;K, V&gt;  1.4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#java-util-RandomAccess"><span class="toc-number">2.0.30.</span> <span class="toc-text">java.util.RandomAccess</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#三、友情链接"><span class="toc-number">3.</span> <span class="toc-text">三、友情链接</span></a></li>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&text=集合"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&is_video=false&description=集合"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=集合&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&name=集合&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 liuzongrui
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/zongruiliu/zongruiliu.github.io">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

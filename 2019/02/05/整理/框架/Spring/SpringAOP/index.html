@@ -10,11 +10,11 @@
 <meta name="keywords" content="spring aop,spring,java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring AOP">
-<meta property="og:url" content="https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/index.html">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/index.html">
 <meta property="og:site_name" content="大胖熊子">
 <meta property="og:description" content="利用 spring aop 的 around 来实现日志拦截器，此拦截器负责打印抛出到顶层的异常日志。 一、具体实现1. 引入相关切面依赖12345678910111213141516&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.aspectj&amp;lt;/groupId&amp;gt;	&amp;lt;artifactId&amp;gt;aspectjrt&amp;lt;/artifactId&amp;gt;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-20T08:50:51.382Z">
+<meta property="og:updated_time" content="2019-05-23T16:30:45.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring AOP">
 <meta name="twitter:description" content="利用 spring aop 的 around 来实现日志拦截器，此拦截器负责打印抛出到顶层的异常日志。 一、具体实现1. 引入相关切面依赖12345678910111213141516&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.aspectj&amp;lt;/groupId&amp;gt;	&amp;lt;artifactId&amp;gt;aspectjrt&amp;lt;/artifactId&amp;gt;">
@@ -73,10 +73,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/02/05/整理/数据结构和算法/数组/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/05/整理/数据库/数据库事务/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/02/05/整理/计算机基础/CPU与内存/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/05/整理/JAVA/JVM/JAVA启动参数/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -89,16 +89,16 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&text=Spring AOP"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&is_video=false&description=Spring AOP"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Spring AOP&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&name=Spring AOP&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&text=Spring AOP"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&is_video=false&description=Spring AOP"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spring AOP&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&name=Spring AOP&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -280,16 +280,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&text=Spring AOP"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&is_video=false&description=Spring AOP"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Spring AOP&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&title=Spring AOP"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/框架/SpringAOP/&name=Spring AOP&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&text=Spring AOP"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&is_video=false&description=Spring AOP"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spring AOP&body=Check out this article: https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&title=Spring AOP"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/02/05/整理/框架/Spring/SpringAOP/&name=Spring AOP&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
