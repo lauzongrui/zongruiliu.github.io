@@ -7,13 +7,14 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="一、基本认知1. 散列集有一种众所周知的数据结构，可以快速地查找所需要的对象，这就是 散列表(hash table)。散列表为每个对象计算一个整数，称为 散列码(hash code) 。散列码是由对象的实例域产生的一个整数。更加准确的说，具有不同数据域的对象将产生不同的散列码。 12345678910111213// String类的hashCode 值// s[0]*31^(n-1) + s[1">
+<meta name="keywords" content="java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="集合">
-<meta property="og:url" content="https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/index.html">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/index.html">
 <meta property="og:site_name" content="大胖熊子">
 <meta property="og:description" content="一、基本认知1. 散列集有一种众所周知的数据结构，可以快速地查找所需要的对象，这就是 散列表(hash table)。散列表为每个对象计算一个整数，称为 散列码(hash code) 。散列码是由对象的实例域产生的一个整数。更加准确的说，具有不同数据域的对象将产生不同的散列码。 12345678910111213// String类的hashCode 值// s[0]*31^(n-1) + s[1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-23T16:20:24.898Z">
+<meta property="og:updated_time" content="2019-05-23T18:12:55.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集合">
 <meta name="twitter:description" content="一、基本认知1. 散列集有一种众所周知的数据结构，可以快速地查找所需要的对象，这就是 散列表(hash table)。散列表为每个对象计算一个整数，称为 散列码(hash code) 。散列码是由对象的实例域产生的一个整数。更加准确的说，具有不同数据域的对象将产生不同的散列码。 12345678910111213// String类的hashCode 值// s[0]*31^(n-1) + s[1">
@@ -72,10 +73,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/05/24/整理/框架/Spring/IoC/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/29/整理/Shell/shell/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/26/整理/JAVA/基础/Java中进制转换/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -88,16 +89,16 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&text=集合"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&is_video=false&description=集合"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=集合&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&name=集合&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&text=集合"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&is_video=false&description=集合"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=集合&body=Check out this article: https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&name=集合&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -125,13 +126,18 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2019-05-23T16:20:24.897Z" itemprop="datePublished">2019-05-24</time>
+        <time datetime="2019-03-27T08:17:15.000Z" itemprop="datePublished">2019-03-27</time>
     </div>
 
 
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/java基础/">java基础</a>
+    </div>
+
 
     </div>
   </header>
@@ -578,16 +584,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&text=集合"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&is_video=false&description=集合"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=集合&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/集合/&name=集合&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&text=集合"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&is_video=false&description=集合"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=集合&body=Check out this article: https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&title=集合"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/03/27/整理/JAVA/基础/集合/&name=集合&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

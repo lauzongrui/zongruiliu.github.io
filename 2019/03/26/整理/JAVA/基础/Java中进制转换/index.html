@@ -7,13 +7,14 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Java中整型默认类型Java中整型默认为 int 类型，存储为4个字节，32位。 Java中后缀加了 “L” 时，为长整型。 12long a1 = -1;   // 默认为int，自动向上转型为 longlong a2 = -1L;  // 自动为long 类型 验证默认为 int 类型1234long a1 = 037777777777;// (1)long a2 = 03777777777">
+<meta name="keywords" content="java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中进制转换">
-<meta property="og:url" content="https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/index.html">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/index.html">
 <meta property="og:site_name" content="大胖熊子">
 <meta property="og:description" content="Java中整型默认类型Java中整型默认为 int 类型，存储为4个字节，32位。 Java中后缀加了 “L” 时，为长整型。 12long a1 = -1;   // 默认为int，自动向上转型为 longlong a2 = -1L;  // 自动为long 类型 验证默认为 int 类型1234long a1 = 037777777777;// (1)long a2 = 03777777777">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-23T16:20:24.894Z">
+<meta property="og:updated_time" content="2019-05-23T18:12:46.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中进制转换">
 <meta name="twitter:description" content="Java中整型默认类型Java中整型默认为 int 类型，存储为4个字节，32位。 Java中后缀加了 “L” 时，为长整型。 12long a1 = -1;   // 默认为int，自动向上转型为 longlong a2 = -1L;  // 自动为long 类型 验证默认为 int 类型1234long a1 = 037777777777;// (1)long a2 = 03777777777">
@@ -72,10 +73,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/05/24/整理/JAVA/基础/深入理解 i++、++i/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/27/整理/JAVA/基础/集合/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/05/22/整理/Shell/nginx/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/23/整理/JAVA/基础/深入理解 i++、++i/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -88,16 +89,16 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&text=Java中进制转换"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&is_video=false&description=Java中进制转换"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Java中进制转换&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&name=Java中进制转换&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&text=Java中进制转换"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&is_video=false&description=Java中进制转换"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java中进制转换&body=Check out this article: https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&name=Java中进制转换&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -125,13 +126,18 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2019-05-23T16:20:24.894Z" itemprop="datePublished">2019-05-24</time>
+        <time datetime="2019-03-26T08:17:15.000Z" itemprop="datePublished">2019-03-26</time>
     </div>
 
 
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/java基础/">java基础</a>
+    </div>
+
 
     </div>
   </header>
@@ -182,16 +188,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&text=Java中进制转换"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&is_video=false&description=Java中进制转换"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Java中进制转换&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/JAVA/基础/Java中进制转换/&name=Java中进制转换&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&text=Java中进制转换"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&is_video=false&description=Java中进制转换"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java中进制转换&body=Check out this article: https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&title=Java中进制转换"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/03/26/整理/JAVA/基础/Java中进制转换/&name=Java中进制转换&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
