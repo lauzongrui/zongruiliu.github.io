@@ -7,15 +7,16 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="配置文件优化( server.xml )配置文件优化其实就是对 server.xml 优化，可以提大大提高 Tomcat 的处理请求的能力，下面我们来看 Tomcat 容器内的优化。 默认配置下，Tomcat 会为每个连接器创建一个绑定的线程池（最大线程数 200），服务启动时，默认创建了 5 个空闲线程随时等待用户请求。 首先，打开 ${TOMCAT_HOME}/conf/server.xml，">
+<meta name="keywords" content="shell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大胖熊子">
-<meta property="og:url" content="https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/index.html">
+<meta property="og:title" content="tomcat及jvm调优">
+<meta property="og:url" content="https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/index.html">
 <meta property="og:site_name" content="大胖熊子">
 <meta property="og:description" content="配置文件优化( server.xml )配置文件优化其实就是对 server.xml 优化，可以提大大提高 Tomcat 的处理请求的能力，下面我们来看 Tomcat 容器内的优化。 默认配置下，Tomcat 会为每个连接器创建一个绑定的线程池（最大线程数 200），服务启动时，默认创建了 5 个空闲线程随时等待用户请求。 首先，打开 ${TOMCAT_HOME}/conf/server.xml，">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-23T18:26:10.948Z">
+<meta property="og:updated_time" content="2019-05-23T18:29:01.303Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大胖熊子">
+<meta name="twitter:title" content="tomcat及jvm调优">
 <meta name="twitter:description" content="配置文件优化( server.xml )配置文件优化其实就是对 server.xml 优化，可以提大大提高 Tomcat 的处理请求的能力，下面我们来看 Tomcat 容器内的优化。 默认配置下，Tomcat 会为每个连接器创建一个绑定的线程池（最大线程数 200），服务启动时，默认创建了 5 个空闲线程随时等待用户请求。 首先，打开 ${TOMCAT_HOME}/conf/server.xml，">
     
     
@@ -36,7 +37,7 @@
         
     
     <!-- title -->
-    <title>大胖熊子</title>
+    <title>tomcat及jvm调优</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -72,8 +73,10 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/04/25/整理/项目文档/费控系统/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        <li><a class="icon" href="/2019/04/25/整理/项目文档/费控系统/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="/2019/03/29/整理/Shell/shell/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -86,16 +89,16 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&text=tomcat及jvm调优"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&is_video=false&description=tomcat及jvm调优"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=tomcat及jvm调优&body=Check out this article: https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&name=tomcat及jvm调优&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -112,7 +115,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        tomcat及jvm调优
     </h1>
 
 
@@ -123,13 +126,18 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2019-05-23T18:23:04.319Z" itemprop="datePublished">2019-05-24</time>
+        <time datetime="2019-03-29T05:42:02.000Z" itemprop="datePublished">2019-03-29</time>
     </div>
 
 
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/shell/">shell</a>
+    </div>
+
 
     </div>
   </header>
@@ -145,6 +153,7 @@
 <p>Tomcat 的启动参数位于安装目录 ${JAVA_HOME}/bin目录下，<a href="http://lib.csdn.net/base/linux" target="_blank" rel="noopener">Linux</a> 操作系统就是 catalina.sh 文件。JAVA_OPTS，就是用来设置 JVM 相关运行参数的变量，还可以在 CATALINA_OPTS 变量中设置。关于这 2 个变量，还是多少有些区别的：</p>
 <p>JAVA_OPTS：用于当 Java 运行时选项“start”、“stop”或“run”命令执行。</p>
 <p>CATALINA_OPTS：用于当 Java 运行时选项“start”或“run”命令执行。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">set CATALINA_OPTS="</span><br><span class="line">-server </span><br><span class="line">-Xms6000M </span><br><span class="line">-Xmx6000M </span><br><span class="line">-Xss512k </span><br><span class="line">-XX:NewSize=2250M </span><br><span class="line">-XX:MaxNewSize=2250M </span><br><span class="line">-XX:PermSize=128M</span><br><span class="line">-XX:MaxPermSize=256M  </span><br><span class="line">-XX:+AggressiveOpts </span><br><span class="line">-XX:+UseBiasedLocking </span><br><span class="line">-XX:+DisableExplicitGC </span><br><span class="line">-XX:+UseParNewGC </span><br><span class="line">-XX:+UseConcMarkSweepGC </span><br><span class="line">-XX:MaxTenuringThreshold=31 </span><br><span class="line">-XX:+CMSParallelRemarkEnabled </span><br><span class="line">-XX:+UseCMSCompactAtFullCollection </span><br><span class="line">-XX:LargePageSizeInBytes=128m </span><br><span class="line">-XX:+UseFastAccessorMethods </span><br><span class="line">-XX:+UseCMSInitiatingOccupancyOnly</span><br><span class="line">-Duser.timezone=Asia/Shanghai </span><br><span class="line">-Djava.awt.headless=true"</span><br></pre></td></tr></table></figure>
 
   </div>
 </article>
@@ -175,16 +184,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/05/24/整理/Shell/tomcat/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&text=tomcat及jvm调优"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&is_video=false&description=tomcat及jvm调优"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=tomcat及jvm调优&body=Check out this article: https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&title=tomcat及jvm调优"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://zongruiliu.github.io/2019/03/29/整理/Shell/tomcat/&name=tomcat及jvm调优&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
